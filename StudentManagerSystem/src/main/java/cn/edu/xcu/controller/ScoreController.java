@@ -42,7 +42,6 @@ public class ScoreController {
 			@RequestParam(defaultValue = "2",required = false)int limit){
 		IPage<Score> toWhichPage=new Page<>(page,limit);
 		QueryWrapper<Score> wrapper=new QueryWrapper<>();//写条件类
-		System.out.println(userid);
 		if(userid!=-1) {
 			wrapper.eq("userid", userid);
 		}
