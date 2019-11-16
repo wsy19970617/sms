@@ -8,4 +8,12 @@ public class HelloController {
 	public String index() {
 		return "main";
 	}
+	@RequestMapping("/hw")
+	public String hw() {
+		return "hello";
+	}
+	@RequestMapping("/s")
+	public String s() {
+		return "score";
+	}
 }

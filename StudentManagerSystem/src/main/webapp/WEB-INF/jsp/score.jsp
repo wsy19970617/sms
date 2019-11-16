@@ -1,63 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>学生成绩信息管理系统</title>
+<meta charset="UTF-8">
+<title>学生成绩管理</title>
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
+<style type="text/css">
+	.layui-container{padding: 0px;margin: 0px;}
+</style>
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-    <div class="layui-logo">学生成绩信息管理系统</div>
-    <!-- 1、头部区域（可配合layui已有的水平导航） -->
-    <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">首页</a></li>
-    </ul>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">舞居
-        </a>
-      </li>
-      <li class="layui-nav-item"><a href="">登出</a></li>
-    </ul>
-  </div>
-  
-  <div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-      <!-- 2.1、左侧导航区域：学生信息管理 -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="" id="stuManage">学生信息管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;" id="addScore">成绩添加</a></dd>
-          </dl>
-        </li>
-      </ul>
-      <!-- 2.2、左侧导航区域：学生用户管理 -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a href="javascript:;">学生用户管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;" id="addUser">用户添加</a></dd>
-            <dd><a href="javascript:;">用户更新</a></dd>
-          </dl>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="layui-body">
-    <!-- 3、内容主体区域 -->
-    <div class="yinshen">
-    <div style="padding: 15px;">
-    <div class="layui-card">
+<body>
+<div class="layui-container layui-col-lg12">
+  <div class="layui-row">
+    <div class="layui-col-lg12">
+    	<!-- 顶部导航开始 -->
+		  	<ul class="layui-nav layui-bg-molv" lay-filter="">
+			  <li class="layui-nav-item"><a href="javascript:;">学生信息管理系统</a></li>
+			  <li class="layui-nav-item"><a href="hw">首页</a></li>
+			  <li class="layui-nav-item"><a href="">个人成绩</a></li>
+			  <li class="layui-nav-item"><a href="">个人信息维护</a></li>
+			  <li class="layui-nav-item layui-this"><a href="index">学生成绩管理</a></li>
+			  <li class="layui-nav-item"><a href="">用户管理</a></li>  
+			</ul>
+			 <!-- 顶部导航结束 -->
+			 <div class="layui-card">
     <!-- 卡片头开始 -->
 	  <div class="layui-card-header">
+	  <button type="button" id="addScore" class="layui-btn layui-btn-radius"style="float: left;">添加学生成绩</button>
 	  	<div class="layui-item">
-        <form class="layui-form" action="" lay-filter="searchFormFilter">
+        <form class="layui-form" style="float: right;" lay-filter="searchFormFilter">
         <div class="layui-inline">
           <!--卡片搜索功能 -->
           <label class="layui-form-label">学生姓名</label>
@@ -83,26 +55,8 @@
 	  <!-- 卡片身体结束 -->
 	</div>
     </div>
-    </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 4、底部固定区域 -->
-    © layui.com - 底部固定区域
-  </div>
+  </div>  
 </div>
-<script type="text/html" id="toolbarDemo">
-  <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">选中学生行信息</button>
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">选中学生信息数</button>
-    <button class="layui-btn layui-btn-sm" lay-event="isAll">全选验证</button>
-  </div>
-</script>
-<script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">修&nbsp;&nbsp;&nbsp;改</a>
-  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删&nbsp;&nbsp;&nbsp;除</a>
-</script>
-
 <!-- 1、成绩修改功能表单，默认为不可见 -->
 <div style="display: none" id="EditDiv">
 	<form class="layui-form" action="" lay-filter="FormFilter">
@@ -135,7 +89,7 @@
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">专业课一成绩</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
       <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
@@ -153,7 +107,6 @@
   </div>
 </form>
 </div><!-- 1、成绩修改功能表单结束 -->
-
 <!-- 2、成绩添加功能表单，默认为不可见 -->
 <div style="display: none" id="AddDiv">
 	<form class="layui-form" action="" lay-filter="addFormFilter">
@@ -173,25 +126,25 @@
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-input-block">英语成绩</label>
+    <label class="layui-form-label">英语成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="english" required lay-verify="required" placeholder="请输入英语成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-input-block">政治成绩</label>
+    <label class="layui-form-label">政治成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="politics" required lay-verify="required" placeholder="请输入政治成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-input-block">专业课一成绩</label>
+    <label class="layui-form-label">专业课一成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-input-block">专业课二成绩</label>
+    <label class="layui-form-label">专业课二成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="major2" required lay-verify="required" placeholder="请输入专业课二成绩" autocomplete="off" class="layui-input">
     </div>
@@ -204,10 +157,19 @@
   </div>
 </form>
 </div><!-- 2、成绩添加功能表单结束 -->
-
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">修&nbsp;&nbsp;&nbsp;改</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删&nbsp;&nbsp;&nbsp;除</a>
+</script>
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-
+<script>
+//注意：导航 依赖 element 模块，否则无法进行功能性操作
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
 <script>
 /* 0、表格功能all */
 layui.use(['table','form'], function(){
@@ -431,13 +393,6 @@ layui.use(['table','form'], function(){
 			
 	  });
 });
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	  	$("#stuManage").click(function(){
-			$("#studentScoreTable").removeClass("yinshen");
-		});
-	});
 </script>
 </body>
 </html>
