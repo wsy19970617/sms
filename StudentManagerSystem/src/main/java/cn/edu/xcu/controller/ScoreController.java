@@ -2,20 +2,20 @@ package cn.edu.xcu.controller;
 
 import java.util.HashMap;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import cn.edu.xcu.entity.Score;
-import cn.edu.xcu.entity.User;
 import cn.edu.xcu.service.IScoreService;
 import cn.edu.xcu.service.IUserService;
 
@@ -37,10 +37,16 @@ public class ScoreController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public IPage<Score> list(
+			@RequestParam(defaultValue = "-1",required = false)int userid,
 			@RequestParam(defaultValue = "1",required = false)int page,
 			@RequestParam(defaultValue = "2",required = false)int limit){
 		IPage<Score> toWhichPage=new Page<>(page,limit);
-		IPage<Score> iPage=iScoreService.page(toWhichPage);
+		QueryWrapper<Score> wrapper=new QueryWrapper<>();//写条件类
+		System.out.println(userid);
+		if(userid!=-1) {
+			wrapper.eq("userid", userid);
+		}
+		IPage<Score> iPage=iScoreService.page(toWhichPage,wrapper);
 		
 		return iPage;
 	}

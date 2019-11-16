@@ -52,7 +52,35 @@
   <div class="layui-body">
     <!-- 3、内容主体区域 -->
     <div style="padding: 15px;">
+    <div class="layui-card">
+    <!-- 卡片头开始 -->
+	  <div class="layui-card-header">
+	  	<div class="layui-item">
+        <form class="layui-form" action="" lay-filter="searchFormFilter">
+        <div class="layui-inline">
+          <!--卡片搜索功能 -->
+          <label class="layui-form-label">学生姓名</label>
+          <div class="layui-input-block">
+            <input type="text" name="userid" placeholder="请输入" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <button class="layui-btn layuiadmin-btn-admin" lay-submit="" lay-filter="searchFilter">
+            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+          </button>
+        </div>
+        </form>
+      </div>
+	  </div>
+	  <!-- 卡片头结束 -->
+	  <!-- 卡片身体开始 -->
+	  <div class="layui-card-body">
+
     	<table class="layui-hide" id="test" lay-filter="test"></table>
+
+	  </div>
+	  <!-- 卡片身体结束 -->
+	</div>
     </div>
   </div>
   
@@ -354,6 +382,7 @@ layui.use(['table','form'], function(){
 			}	
         });
 	});
+<<<<<<< HEAD
 	
 	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
 	 form.on('submit(addForm)', function(data){
@@ -376,6 +405,38 @@ layui.use(['table','form'], function(){
 		 return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 	 });
 	});
+=======
+	 /* 3、监听操作列事件之年级提交功能b */
+	  form.on('submit(addForm)', function(data){
+		  layui.$.post("score/update",data.field,function(res){
+			  layer.closeAll();
+				if(res.code==0){	
+					table.reload('test', {
+						  url: 'score/list'
+						});
+				}else{
+					layer.msg(res.msg, 
+						{
+						  icon: 2,
+						  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						  
+						});
+				}
+			  });
+		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+	  });
+	  /* 3、监听操作列事件之搜索功能 */
+	  form.on('submit(searchFilter)', function(data){
+			table.reload('test', {
+				url: 'score/list'
+				,where: data.field //设定异步数据接口的额外参数
+			});
+				  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+			
+	  });
+});
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 </script>
 </body>
 </html>
