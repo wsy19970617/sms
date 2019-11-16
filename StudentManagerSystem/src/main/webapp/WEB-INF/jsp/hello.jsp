@@ -49,7 +49,6 @@
 	  </div>
   </div>
 
-    
   <div class="layui-footer footer footer-doc layui-col-lg12">
     <!-- 3、底部固定区域 -->
     <p class=" layui-bg-black" style="padding: 6vw; text-align:center;">&copy; 2019 dcn 团队</p>
