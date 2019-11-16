@@ -54,7 +54,7 @@ background:#E0FFFF
 		<div class="login-main">
 			<p style="color: #5FB878; font-size: 25px; text-align: center;">欢迎登录</p>
 			<!-- 登录表单开始 -->
-			<form class="layui-form">
+			<form class="layui-form" method="post">
 				<div class="layui-input-inline">
 					<input type="text" class="layui-input" name="username" required
 						lay-verify="required" placeholder="请输入用户名" autocomplete="off"
@@ -124,8 +124,9 @@ background:#E0FFFF
 		  form.on('submit(doRegisterBtn)', function(data){
 			  if(data.field.pwd==data.field.pwd2){
 			  layui.$.post("user/add",data.field,function(res){
-				  layer.closeAll();
-					if(res.code==0){	
+				  
+					if(res.code==0){
+						layer.closeAll();	
 						layer.msg("注册成功，马上登录吧", {
 								  icon: 6,
 								  time: 2000 //2秒关闭（如果不配置，默认是3秒）
@@ -146,7 +147,11 @@ background:#E0FFFF
 					layer.msg('两次密码不同', {icon: 5}); 
 				}
 			    return false;
-			  }); 
+			  });
+		//登录提交按钮监听
+		  form.on('submit(login)', function(data){
+			  layui.$.post("user/doLogin",data.field);
+		  });  
 	});              
 	</script>
 </body>

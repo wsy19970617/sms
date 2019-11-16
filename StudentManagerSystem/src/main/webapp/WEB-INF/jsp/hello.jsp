@@ -9,6 +9,7 @@
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
 	.contro{height:20vh;}
+	.controWidth{width:100vw;height: 430px;}
 </style>
 </head>
 <body>
@@ -34,12 +35,12 @@
   	<div class="layui-col-lg12">
   		<div class="layui-carousel" id="test1" lay-filter="test1">
 		  <div carousel-item="">
-		    <div><img src="image/2019091110495001.jpg"/></div>
-		    <div><img src="image/2019091110500502.jpg"/></div>
-		    <div><img src="image/2019062417174203.jpg"/></div>
-		    <div><img src="image/2019062416225804.jpg"/></div>
-		    <div><img src="image/201962505.jpg"/></div>
-		    <div><img src="image/XUEXIQIANGGUO06.jpg"/></div>
+		    <div><img src="image/2019091110495001.jpg" class="controWidth"/></div>
+		    <div><img src="image/2019091110500502.jpg" class="controWidth"/></div>
+		    <div><img src="image/2019062417174203.jpg" class="controWidth"/></div>
+		    <div><img src="image/2019062416225804.jpg" class="controWidth"/></div>
+		    <div><img src="image/201962505.jpg" class="controWidth"/></div>
+		    <div><img src="image/XUEXIQIANGGUO06.jpg" class="controWidth"/></div>
 		  </div>
 		</div>
   	</div>

@@ -4,6 +4,8 @@ import cn.edu.xcu.entity.User;
 import cn.edu.xcu.mapper.UserMapper;
 import cn.edu.xcu.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +18,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+	@Autowired
+	private UserMapper userMapper;
+	@Override
+	public User findByUserName(String username) {
+		User user=userMapper.findByName(username);
+		return user;
+	}
 
 }
