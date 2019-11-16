@@ -61,9 +61,9 @@
 </div>
 <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
-    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">选中学生行信息</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">选中学生信息数</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">全选验证</button>
   </div>
 </script>
 <script type="text/html" id="barDemo">
@@ -124,15 +124,19 @@
 
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
 <script>
+/* 0、表格功能all */
 layui.use(['table','form'], function(){
   var table = layui.table;
   var form=layui.form;
+  
+  /* 1、表格遍历显示功能a */
   table.render({
     elem: '#test'
     ,url:'score/list'
-    ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-    ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+    ,toolbar: '#toolbarDemo' // ①开启头部工具栏，并为其绑定左侧模板
+    ,defaultToolbar: ['filter', 'exports', 'print', { // ②自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
       title: '提示'
       ,layEvent: 'LAYTABLE_TIPS'
       ,icon: 'layui-icon-tips'
@@ -142,7 +146,7 @@ layui.use(['table','form'], function(){
       {type: 'checkbox', fixed: 'left'}
       ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
       ,{field:'userid', title:'学生姓名', width:130, sort: true}
-      ,{field:'gradeid', title:'学生年级', width:100, sort: true}
+      ,{field:'gradeid', title:'学生年级', width:110, sort: true}
       ,{field:'english', title:'英语成绩', width:130, sort: true}
       ,{field:'politics', title:'政治成绩', width:130, sort: true}
       ,{field:'major1', title:'专业课一成绩', width:140, sort: true}
@@ -162,30 +166,32 @@ layui.use(['table','form'], function(){
 	    limit: 5
   });
   
-  //头工具栏事件
+  /* 2、头工具栏事件功能all */
   table.on('toolbar(test)', function(obj){
     var checkStatus = table.checkStatus(obj.config.id);
     switch(obj.event){
+    	// ①选中学生行信息
       case 'getCheckData':
         var data = checkStatus.data;
         layer.alert(JSON.stringify(data));
       break;
+      	// ②选中学生信息数
       case 'getCheckLength':
         var data = checkStatus.data;
         layer.msg('选中了：'+ data.length + ' 个');
       break;
+      	// ③验证全选
       case 'isAll':
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
-      
-      //自定义头工具栏右侧图标 - 提示
+      	// ④自定义头工具栏右侧图标 - 提示
       case 'LAYTABLE_TIPS':
         layer.alert('这是工具栏右侧自定义的一个图标按钮');
       break;
     };
   });
   
-  //监听操作列事件
+  /* 3、监听操作列事件之年级回显功能a */
   table.on('tool(test)', function(obj){
     var data = obj.data;
     if(obj.event === 'edit'){
@@ -209,7 +215,8 @@ layui.use(['table','form'], function(){
         });
     }
   });
-  //监听提交
+  
+  /* 3、监听操作列事件之年级提交功能b */
   form.on('submit(formDemo)', function(data){
 	  layui.$.post("score/update",data.field,function(res){
 		  layer.closeAll();
@@ -229,6 +236,8 @@ layui.use(['table','form'], function(){
 		  });
 	  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
   });
+
+  
 });
 </script>
 </body>
