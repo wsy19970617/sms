@@ -18,7 +18,7 @@
     	<!-- 顶部导航开始 -->
 		  	<ul class="layui-nav layui-bg-molv" lay-filter="">
 			  <li class="layui-nav-item"><a href="javascript:;">学生信息管理系统</a></li>
-			  <li class="layui-nav-item layui-this"><a href="">首页</a></li>
+			  <li class="layui-nav-item layui-this"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="">个人成绩</a></li>
 			  <li class="layui-nav-item"><a href="">个人信息维护</a></li>
 			  <li class="layui-nav-item"><a href="s">学生成绩管理</a></li>
