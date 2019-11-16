@@ -1,5 +1,11 @@
 package cn.edu.xcu.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,13 +14,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import cn.edu.xcu.entity.Score;
+import cn.edu.xcu.entity.User;
 import cn.edu.xcu.service.IScoreService;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import cn.edu.xcu.service.IUserService;
 
 /**
  * <p>
@@ -29,6 +31,8 @@ import org.springframework.stereotype.Controller;
 public class ScoreController {
 	@Autowired
 	private IScoreService iScoreService;
+	@Autowired
+	private IUserService iUserService;
 	@RequestMapping("/list")
 	@ResponseBody
 	public IPage<Score> list(
@@ -36,6 +40,7 @@ public class ScoreController {
 			@RequestParam(defaultValue = "2",required = false)int limit){
 		IPage<Score> toWhichPage=new Page<>(page,limit);
 		IPage<Score> iPage=iScoreService.page(toWhichPage);
+		
 		return iPage;
 	}
 	
