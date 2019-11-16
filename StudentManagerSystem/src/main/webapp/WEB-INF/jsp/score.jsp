@@ -26,45 +26,52 @@
 	  </div><!-- 1、顶部导航结束 -->
   </div>
   
-  <div class="layui-container layui-col-lg12">
-	  <!-- 2、内容主体区域 -->
-	  <div class="layui-row">
-	    <div class="layui-col-lg12">
-	    	<div class="layui-row contro">&nbsp;</div>
-			<div class="layui-card">
-		      <!-- 2.1、卡片头开始 -->
-			  <div class="layui-card-header">
-			  	 <button type="button" id="addScore" class="layui-btn layui-btn-radius"style="float: left;">添加学生成绩</button>
-			  	 
-			  	 <div class="layui-item">
-			        <form class="layui-form" style="float: right;" lay-filter="searchFormFilter">
-				        <div class="layui-inline">
-				          <!--卡片搜索功能 -->
-				          <label class="layui-form-label">学生姓名</label>
-				          <div class="layui-input-block">
-				            <input type="text" name="userid" placeholder="请输入姓名" autocomplete="off" class="layui-input">
-				          </div>
-				        </div>
-				        <div class="layui-inline">
-				          <button class="layui-btn layuiadmin-btn-admin" lay-submit="" lay-filter="searchFilter">
-				            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-				          </button>
-				        </div>
-			        </form>
-		         </div>
-			  </div>
-			  <!-- 2.1、 卡片头结束 -->
-			  <!-- 2.2、卡片主体开始 -->
-			  <div class="layui-card-body">
-		    	<table class="layui-hide" id="test" lay-filter="test"></table>
-			  </div>
-			  <!-- 2.2、卡片主体结束 -->
-			</div>
-	    </div>
-	  </div> <!-- 2、内容主体区域结束 --> 
+  <div class="layui-layout layui-layout-admin">
+	  <div class="layui-container layui-col-lg12">
+		  <!-- 2、内容主体区域 -->
+		  <div class="layui-row">
+		    <div class="layui-col-lg12">
+		    	<div class="layui-row contro">&nbsp;</div>
+				<div class="layui-card">
+			      <!-- 2.1、卡片头开始 -->
+				  <div class="layui-card-header">
+				  	 <button type="button" id="addScore" class="layui-btn layui-btn-radius"style="float: left;">添加学生成绩</button>
+				  	 
+				  	 <div class="layui-item">
+				        <form class="layui-form" style="float: right;" lay-filter="searchFormFilter">
+					        <div class="layui-inline">
+					          <!--卡片搜索功能 -->
+					          <label class="layui-form-label">学生姓名</label>
+					          <div class="layui-input-block">
+					            <input type="text" name="userid" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+					          </div>
+					        </div>
+					        <div class="layui-inline">
+					          <button class="layui-btn layuiadmin-btn-admin" lay-submit="" lay-filter="searchFilter">
+					            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+					          </button>
+					        </div>
+				        </form>
+			         </div>
+				  </div>
+				  <!-- 2.1、 卡片头结束 -->
+				  <!-- 2.2、卡片主体开始 -->
+				  <div class="layui-card-body">
+			    	<table class="layui-hide" id="test" lay-filter="test"></table>
+				  </div>
+				  <!-- 2.2、卡片主体结束 -->
+				</div>
+		    </div>
+		  </div> <!-- 2、内容主体区域结束 --> 
+	  </div>
   </div>
   
-<!-- 3、成绩修改功能表单，默认为不可见 -->
+  <!-- <div class="layui-footer footer footer-doc layui-col-lg12">
+    3、底部固定区域
+    <p class=" layui-bg-black" style="padding: 6vw; text-align:center;">&copy; 2019 dcn 团队</p>
+  </div> -->
+  
+<!-- 4、成绩修改功能表单，默认为不可见 -->
 <div style="display: none" id="EditDiv">
 	<form class="layui-form" action="" lay-filter="FormFilter">
 	<input type="hidden" name="id"/>
@@ -113,9 +120,9 @@
     </div>
   </div>
 </form>
-</div><!-- 3、成绩修改功能表单结束 -->
+</div><!-- 4、成绩修改功能表单结束 -->
 
-<!-- 4、成绩添加功能表单，默认为不可见 -->
+<!-- 5、成绩添加功能表单，默认为不可见 -->
 <div style="display: none" id="AddDiv">
 	<form class="layui-form" action="" lay-filter="addFormFilter">
 	<input type="hidden" name="id"/>
@@ -164,7 +171,7 @@
     </div>
   </div>
 </form>
-</div><!-- 4、成绩添加功能表单结束 -->
+</div><!-- 5、成绩添加功能表单结束 -->
 
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">修&nbsp;&nbsp;&nbsp;改</a>

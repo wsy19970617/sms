@@ -29,26 +29,30 @@
 	  <!-- 顶部导航结束 -->
 	  </div>
   </div>
+  
   <!-- <div class="layui-row contro">&nbsp;</div> -->
-  <div class="layui-container layui-col-lg12">
-  <!-- 2、内容主体区域 -->
-  	<div class="layui-col-lg12">
-  		<div class="layui-carousel" id="test1" lay-filter="test1">
-		  <div carousel-item="">
-		    <div><img src="image/2019091110495001.jpg" class="controwidth"/></div>
-		    <div><img src="image/2019091110500502.jpg" class="controwidth"/></div>
-		    <div><img src="image/2019062417174203.jpg" class="controwidth"/></div>
-		    <div><img src="image/2019062416225804.jpg" class="controwidth"/></div>
-		    <div><img src="image/201962505.jpg" class="controwidth"/></div>
-		    <div><img src="image/XUEXIQIANGGUO06.jpg" class="controwidth" /></div>
-		  </div>
-		</div>
-  	</div>
+  <div class="layui-layout layui-layout-admin">
+	  <div class="layui-container layui-col-lg12">
+	  <!-- 2、内容主体区域 -->
+	  	<div class="layui-col-lg12">
+	  		<div class="layui-carousel" id="test1" lay-filter="test1">
+			  <div carousel-item="">
+			    <div><img src="image/2019091110495001.jpg" class="controwidth"/></div>
+			    <div><img src="image/2019091110500502.jpg" class="controwidth"/></div>
+			    <div><img src="image/2019062417174203.jpg" class="controwidth"/></div>
+			    <div><img src="image/2019062416225804.jpg" class="controwidth"/></div>
+			    <div><img src="image/201962505.jpg" class="controwidth"/></div>
+			    <div><img src="image/XUEXIQIANGGUO06.jpg" class="controwidth" /></div>
+			  </div>
+			</div>
+	  	</div>
+	  </div>
   </div>
-  <div class="layui-row contro">&nbsp;</div>
-  <div class="layui-footer" style="text-align: center;">
+
+    
+  <div class="layui-footer footer footer-doc layui-col-lg12">
     <!-- 3、底部固定区域 -->
-    © xcn团队
+    <p class=" layui-bg-black" style="padding: 6vw; text-align:center;">&copy; 2019 dcn 团队</p>
   </div>
    
 <script src="bower_components/layui/dist/layui.js"></script>
