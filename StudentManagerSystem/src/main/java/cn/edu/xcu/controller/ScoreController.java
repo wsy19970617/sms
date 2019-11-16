@@ -49,6 +49,7 @@ public class ScoreController {
 	@ResponseBody
 	public Map<String,Object> update(Score score){
 		Map<String,Object> result=new HashMap<>();
+		System.out.println(score);
 		boolean ret=iScoreService.saveOrUpdate(score);
 		if(ret) {
 			result.put("code", 0);
@@ -59,5 +60,6 @@ public class ScoreController {
 		}
 		return result;
 	}
+	
 }
 

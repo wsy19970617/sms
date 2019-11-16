@@ -32,8 +32,7 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">学生信息管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">成绩添加</a></dd>
-            <dd><a href="javascript:;">成绩更新</a></dd>
+            <dd><a href="javascript:;" id="addScore">成绩添加</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -120,7 +119,56 @@
   </div>
 </form>
 </div><!-- 1、成绩修改功能表单结束 -->
-
+<!-- 1、成绩添加功能表单，默认为不可见 -->
+<div style="display: none" id="AddDiv">
+	<form class="layui-form" action="" lay-filter="addFormFilter">
+	<input type="hidden" name="id"/>
+  <div class="layui-form-item">
+    <label class="layui-form-label">学生姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="userid" required  lay-verify="required" placeholder="请输入学生姓名" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">学生年级</label>
+    <div class="layui-input-block">
+      <select name="gradeid" lay-verify="required" id="addGradeidSel">
+        <option value="-1">---请选择---</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">英语成绩</label>
+    <div class="layui-input-inline">
+      <input type="text" name="english" required lay-verify="required" placeholder="请输入英语成绩" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">政治成绩</label>
+    <div class="layui-input-inline">
+      <input type="text" name="politics" required lay-verify="required" placeholder="请输入政治成绩" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">专业课一成绩</label>
+    <div class="layui-input-inline">
+      <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">专业课二成绩</label>
+    <div class="layui-input-inline">
+      <input type="text" name="major2" required lay-verify="required" placeholder="请输入专业课二成绩" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="addForm">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</div><!-- 1、成绩添加功能表单结束 -->
 
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -201,6 +249,8 @@ layui.use(['table','form'], function(){
 			area:['35%','78%'],
 			success: function(layero, index){
 				   form.val("FormFilter",data);
+				   layui.$("#gradeidSel").empty();
+					 layui.$("#gradeidSel").append("<option value='-1'>---请选择---<option>");
 				   layui.$.post("grade/findAll",function(data){
 						for(var i=0;i<data.length;i++){
 							var op=new Option(data[i].name,data[i].id);
@@ -238,6 +288,51 @@ layui.use(['table','form'], function(){
   });
 
   
+});
+</script>
+<script type="text/javascript">
+layui.use(['table','form'], function(){
+	var table = layui.table;
+	 var form=layui.form;
+	$("#addScore").click(function(){
+		layer.open({
+			type:1,
+			content:$("#AddDiv"),
+			area:['35%','78%'],
+			success: function(layero, index){
+				 form.val("addFormFilter",{"gradeid":"-1"});
+				 layui.$("#addGradeidSel").empty();
+				 layui.$("#addGradeidSel").append("<option value='-1'>---请选择---<option>");				   
+				 layui.$.post("grade/findAll",function(data){
+						for(var i=0;i<data.length;i++){
+							var op=new Option(data[i].name,data[i].id);
+							layui.$("#addGradeidSel").append(op);
+						}
+						form.render('select');//动态更新插入的新option，要不然select选项无法显示
+				   });
+			}	
+        });
+	});
+	 /* 3、监听操作列事件之年级提交功能b */
+	  form.on('submit(addForm)', function(data){
+		  layui.$.post("score/update",data.field,function(res){
+			  layer.closeAll();
+				if(res.code==0){	
+					table.reload('test', {
+						  url: 'score/list'
+						});
+				}else{
+					layer.msg(res.msg, 
+						{
+						  icon: 2,
+						  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						  
+						});
+				}
+			  });
+		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+	  });
 });
 </script>
 </body>
