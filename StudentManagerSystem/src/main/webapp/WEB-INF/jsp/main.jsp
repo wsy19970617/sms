@@ -292,7 +292,40 @@ layui.use(['table','form'], function(){
 				   });
 			}	
         });
-    }
+    }else if(obj.event === 'del'){
+    	//弹出删除确认框
+    	layer.confirm('真的删除行么', function(index) {//如果点击确定yes后调用
+			//layui.jquery 找到 jQuery(url,[data],[callback],[type])
+			layui.jquery.post("score/delete", 
+			{//这里传参数,data中找id
+				id : data.id
+			//function(data){console.log("----"+data)}
+			}, function(ret) {//成功时的回调函数，服务器返回消息后对页面进行处理
+				if (ret.code == "1") {//删除成功， 刷新当前页表格
+					layer.msg(ret.msg,//删除成功的消息
+					{
+						icon : 1,
+						time : 1500
+					//1.5s后关闭(如果不配置，默认3s)
+					//持续多久自动关闭
+					}, function() {//成功弹出消息框时候调用
+						obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
+						layer.close(index);//关闭弹出框
+						table.reload("test", {
+							url : "score/list"
+						});//重新加载表单（id=test）(表单重载)
+					});
+				} else if (ret.code == "-1") { //删除失败
+					layer.alert(ret.msg, {
+						icon : 2
+					}, function() {
+						layer.close(index);
+					});
+				}
+			});
+		})
+		
+     }
   });
   
   /* 3、监听操作列事件之年级提交功能b */
@@ -315,45 +348,6 @@ layui.use(['table','form'], function(){
 		  });
 	  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
   });
-
-  /* 5、监听操作列事件之删除功能c */
-  table.on('tool(test)', function(obj){
-	  var data = obj.data;
-	  if (obj.event === 'del') {
-			//弹出删除确认框
-			layer.confirm('真的删除行么', function(index) {//如果点击确定yes后调用
-				//layui.jquery 找到 jQuery(url,[data],[callback],[type])
-				layui.jquery.post("score/delete", 
-				{//这里传参数,data中找id
-					id : data.id
-				//function(data){console.log("----"+data)}
-				}, function(ret) {//成功时的回调函数，服务器返回消息后对页面进行处理
-					if (ret.code == "1") {//删除成功， 刷新当前页表格
-						layer.msg(ret.msg,//删除成功的消息
-						{
-							icon : 1,
-							time : 1500
-						//1.5s后关闭(如果不配置，默认3s)
-						//持续多久自动关闭
-						}, function() {//成功弹出消息框时候调用
-							obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
-							layer.close(index);//关闭弹出框
-							table.reload("test", {
-								url : "score/list"
-							});//重新加载表单（id=test）(表单重载)
-						});
-					} else if (ret.code == "-1") { //删除失败
-						layer.alert(ret.msg, {
-							icon : 2
-						}, function() {
-							layer.close(index);
-						});
-					}
-				});
-			});
-	
-		}
-    });
 });
 </script>
 <script type="text/javascript">
@@ -381,12 +375,8 @@ layui.use(['table','form'], function(){
 				   });
 			}	
         });
-<<<<<<< HEAD
+
 	});
-	
-=======
-	});	
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
 	 form.on('submit(addForm)', function(data){
 		 layui.$.post("score/update",data.field,function(res){
@@ -406,15 +396,10 @@ layui.use(['table','form'], function(){
 			}
 		 });
 		 return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-<<<<<<< HEAD
-	 });
-	});
 
-	 /* 6、监听操作列事件之成绩查询回显功能a */
-=======
 	 });
 	 /* 3、监听操作列事件之年级提交功能b */
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
+
 	  form.on('submit(addForm)', function(data){
 		  layui.$.post("score/update",data.field,function(res){
 			  layer.closeAll();
