@@ -217,7 +217,7 @@ layui.use(['table','form'], function(){
 						for(var i=0;i<data.length;i++){
 							var op=new Option(data[i].name,data[i].id);
 							layui.$("#gradeidSel").append(op);
-							if(data[i].id==obj.data.tid){
+							if(data[i].id==obj.data.gradeid){
 								op.selected=true;
 							}
 						}
@@ -229,8 +229,23 @@ layui.use(['table','form'], function(){
   });
   //监听提交
   form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
+	  layui.$.post("score/update",data.field,function(res){
+		  layer.closeAll();
+			if(res.code==0){	
+				table.reload('test', {
+					  url: 'score/list'
+					});
+			}else{
+				layer.msg(res.msg, 
+					{
+					  icon: 2,
+					  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+					}, function(){
+					  
+					});
+			}
+		  });
+	  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
   });
 });
 </script>

@@ -10,6 +10,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.edu.xcu.entity.Score;
 import cn.edu.xcu.service.IScoreService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -34,6 +37,21 @@ public class ScoreController {
 		IPage<Score> toWhichPage=new Page<>(page,limit);
 		IPage<Score> iPage=iScoreService.page(toWhichPage);
 		return iPage;
+	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public Map<String,Object> update(Score score){
+		Map<String,Object> result=new HashMap<>();
+		boolean ret=iScoreService.saveOrUpdate(score);
+		if(ret) {
+			result.put("code", 0);
+			result.put("msgs", "更新成功");
+		}else {
+			result.put("code", -1);
+			result.put("msg", "更新失败");
+		}
+		return result;
 	}
 }
 
