@@ -22,18 +22,25 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since 2019-11-15
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	private IUserService iUserService;
 	@RequestMapping("/add")
-	public String UserAdd(User user) {
+	public Map<String,Object> UserAdd(User user,String pwd2) {
+		Map<String,Object> result=new HashMap<>();
 		boolean ret=iUserService.save(user);
-		if(ret) {
-			return "/main";
+		if (pwd2.equals(user.getPwd())) {
+			if (ret) {
+				result.put("code", 0);
+			} else {
+				result.put("code", -1);
+				result.put("msg", "注册失败，用户名已存在");
+			} 
 		}else {
-	        return "redirect:/add";	
+			result.put("code", -1);
 		}
-	
+		return result;
 	}
 	
 	@RequestMapping("/del")
