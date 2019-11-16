@@ -102,13 +102,8 @@
   <div class="layui-form-item">
     <label class="layui-form-label">年级</label>
     <div class="layui-input-block">
-      <select name="gradeid" lay-verify="required">
-        <option value=""></option>
-        <option value="0">北京</option>
-        <option value="1">上海</option>
-        <option value="2">广州</option>
-        <option value="3">深圳</option>
-        <option value="4">杭州</option>
+      <select name="gradeid" lay-verify="required" id="gradeidSel">
+        <option value="-1">---请选择---</option>
       </select>
     </div>
   </div>
@@ -218,6 +213,16 @@ layui.use(['table','form'], function(){
 			area:['35%','78%'],
 			success: function(layero, index){
 				   form.val("FormFilter",data);
+				   layui.$.post("grade/findAll",function(data){
+						for(var i=0;i<data.length;i++){
+							var op=new Option(data[i].name,data[i].id);
+							layui.$("#gradeidSel").append(op);
+							if(data[i].id==obj.data.tid){
+								op.selected=true;
+							}
+						}
+						form.render('select');//动态更新插入的新option，要不然select选项无法显示
+				   });
 			}	
         });
     }
