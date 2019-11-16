@@ -1,6 +1,10 @@
 package cn.edu.xcu.controller;
 
 import java.util.HashMap;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import cn.edu.xcu.entity.Score;
+import cn.edu.xcu.entity.User;
 import cn.edu.xcu.service.IScoreService;
 import cn.edu.xcu.service.IUserService;
 
