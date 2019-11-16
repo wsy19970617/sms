@@ -12,8 +12,8 @@ public class JumpController {
 	public String s() {
 		return "score";
 	}
-	@RequestMapping("/sp")
-	public String ss() {
-		return "register";
+	@RequestMapping("/toLogin")
+	public String sss() {
+		return "login";
 	}
 }
