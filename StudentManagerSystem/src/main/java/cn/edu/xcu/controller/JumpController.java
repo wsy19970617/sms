@@ -12,4 +12,8 @@ public class JumpController {
 	public String s() {
 		return "score";
 	}
+	@RequestMapping("/sp")
+	public String ss() {
+		return "register";
+	}
 }

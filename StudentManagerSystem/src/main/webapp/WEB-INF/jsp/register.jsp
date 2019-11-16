@@ -5,10 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>学生信息管理注册页</title>
-<link rel="stylesheet"
-	href="src/main/resources/static/bower_components/layui/dist/css/layui.css" type="text/css">
-<script src="src/main/resources/static/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<script src="src/main/resources/static/bower_components/layui/dist/layui.all.js" type="text/javascript"></script>
+<link rel="stylesheet" href="bower_components/layui/dist/css/layui.css" type="text/css">
+
 </head>
 <style>
 
@@ -84,7 +82,8 @@ background:#E0FFFF
 		</div>
 	</div>
 
-	<script src="../layui/layui.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="bower_components/layui/dist/layui.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		layui.use([ 'form', 'layer', 'jquery' ], function() {
 
@@ -100,9 +99,9 @@ background:#E0FFFF
 					type : 'post',
 					success : function(data) {
 						if (data == '1') {
-							location.href = "../index.php";
+							location.href = "toLogin";
 						} else {
-							layer.msg('登录名或密码错误');
+							layer.msg('用户名已存在');
 						}
 					}
 				})
