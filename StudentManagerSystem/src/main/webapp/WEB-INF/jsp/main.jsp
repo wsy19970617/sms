@@ -121,25 +121,25 @@
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">英语成绩</label>
-    <div class="layui-input-block">
+    <div class="layui-input-inline">
       <input type="text" name="english" required lay-verify="required" placeholder="请输入英语成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">政治成绩</label>
-    <div class="layui-input-block">
+    <div class="layui-input-inline">
       <input type="text" name="politics" required lay-verify="required" placeholder="请输入政治成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">专业课一成绩</label>
-    <div class="layui-input-block">
+    <div class="layui-input-inline">
       <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">专业课二成绩</label>
-    <div class="layui-input-block">
+    <div class="layui-input-inline">
       <input type="text" name="major2" required lay-verify="required" placeholder="请输入专业课二成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
@@ -339,7 +339,7 @@ layui.use(['table','form'], function(){
 							obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
 							layer.close(index);//关闭弹出框
 							table.reload("test", {
-								url : "book/list"
+								url : "score/list"
 							});//重新加载表单（id=test）(表单重载)
 						});
 					} else if (ret.code == "-1") { //删除失败
@@ -382,7 +382,6 @@ layui.use(['table','form'], function(){
 			}	
         });
 	});
-<<<<<<< HEAD
 	
 	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
 	 form.on('submit(addForm)', function(data){
@@ -405,8 +404,8 @@ layui.use(['table','form'], function(){
 		 return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 	 });
 	});
-=======
-	 /* 3、监听操作列事件之年级提交功能b */
+
+	 /* 6、监听操作列事件之成绩查询回显功能a */
 	  form.on('submit(addForm)', function(data){
 		  layui.$.post("score/update",data.field,function(res){
 			  layer.closeAll();
@@ -426,7 +425,7 @@ layui.use(['table','form'], function(){
 			  });
 		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 	  });
-	  /* 3、监听操作列事件之搜索功能 */
+	  /* 6、监听操作列事件之成绩查询提交功能b */
 	  form.on('submit(searchFilter)', function(data){
 			table.reload('test', {
 				url: 'score/list'
@@ -436,7 +435,6 @@ layui.use(['table','form'], function(){
 			
 	  });
 });
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 </script>
 </body>
 </html>
