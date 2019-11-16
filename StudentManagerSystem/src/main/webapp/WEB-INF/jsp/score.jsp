@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
+	.layui-card-header{border: 0px;}
 </style>
 </head>
 <body class="layui-layout-body">
