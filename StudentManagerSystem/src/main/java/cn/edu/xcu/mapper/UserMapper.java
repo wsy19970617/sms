@@ -1,6 +1,7 @@
 package cn.edu.xcu.mapper;
 
 import cn.edu.xcu.entity.User;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -12,5 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2019-11-15
  */
 public interface UserMapper extends BaseMapper<User> {
-
+	User findByName(String username);
 }

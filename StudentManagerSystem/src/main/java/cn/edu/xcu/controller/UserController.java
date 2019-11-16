@@ -27,18 +27,18 @@ public class UserController {
 	@Autowired
 	private IUserService iUserService;
 	@RequestMapping("/add")
-	public Map<String,Object> UserAdd(User user,String pwd2) {
+	public Map<String,Object> UserAdd(User user) {
 		Map<String,Object> result=new HashMap<>();
-		boolean ret=iUserService.save(user);
-		if (pwd2.equals(user.getPwd())) {
+		User exitUser=null;
+		exitUser=iUserService.findByUserName(user.getUsername());
+		if(exitUser==null) {
+			boolean ret=iUserService.save(user);
 			if (ret) {
 				result.put("code", 0);
-			} else {
-				result.put("code", -1);
-				result.put("msg", "注册失败，用户名已存在");
-			} 
+			}
 		}else {
 			result.put("code", -1);
+			result.put("msg", "注册失败，用户名已存在");
 		}
 		return result;
 	}
@@ -70,11 +70,25 @@ public class UserController {
 		return ret;
 		
 	}
-	
-	
+	@RequestMapping("/doLogin")
+	public String doLogin(User user){
+		User exitUser=null;
+		exitUser=iUserService.findByUserName(user.getUsername());
+		if(exitUser!=null) {
+			if(exitUser.getPwd().equals(user.getPwd())) {
+				return "redirect:/index";
+			}else {
+				return "toLogin";
+			}
+		}else {
+			return "toLogin";
+		}
+		
+	}
 	@RequestMapping("/findAll")
 	public List<User> findAll(){
 		return iUserService.list();
 	}
+
 }
 
