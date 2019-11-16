@@ -24,7 +24,7 @@ public class CodeGenerator {
 				"jdbc:mysql://localhost:3306/sms?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
 		dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
 		dataSourceConfig.setUsername("root");
-		dataSourceConfig.setPassword("root");
+		dataSourceConfig.setPassword("123456");
 		// 自定义代码模板
 		TemplateConfig templateConfig = new TemplateConfig();
 		// 自定义属性注入
