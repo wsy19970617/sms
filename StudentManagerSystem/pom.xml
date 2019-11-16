@@ -19,28 +19,39 @@
 	</properties>
 
 	<dependencies>
+		<!--1、添加springboot web框架启动 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- 2、运行web开发时候，当你修改了资源不需要手动重启类的插件 但注意在项目开发完毕要将其去掉，或者注释 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
+		<!-- 3、添加mysql数据库 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- 4、springboot启动测试 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- 4、添加jsp相关依赖 -->
+		
+		<!-- 5、添加jsp相关依赖 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -50,13 +61,13 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		
-		<!-- 5、Tomcat服务器支持jsp -->
+		<!-- 6、Tomcat服务器支持jsp -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		
-		<!-- 6、mybatis-puls插件依赖 -->
+		<!-- 7、mybatis-puls插件依赖 -->
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-generator</artifactId>
@@ -68,11 +79,26 @@
 			<version>2.1</version>
 		</dependency>
 		
-		<!-- 7、spring—mybatis 集成依赖，spring与mybatis集成时对一些类库的版本有要求（需配套），添加此依赖可解决 -->
+		<!-- 8、spring—mybatis 集成依赖，spring与mybatis集成时对一些类库的版本有要求（需配套），添加此依赖可解决 -->
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.2.0</version>
+		</dependency>
+		
+		<!-- 9、spring security安全权限 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
 	</dependencies>
 

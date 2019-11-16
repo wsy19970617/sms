@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>   --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +17,32 @@
 	  <!-- 1、顶部导航开始 -->
 	  <div class="layui-header">
 	    <div class="layui-logo">学生信息管理系统</div>
-	    <!-- 头部区域（可配合layui已有的水平导航） -->
+	    <!-- 1.1、头部左区域 -->
 	    <ul class="layui-nav layui-layout-left">
-			  <li class="layui-nav-item layui-this"><a href="index">首页</a></li>
-			  <li class="layui-nav-item"><a href="">个人成绩</a></li>
-			  <li class="layui-nav-item"><a href="">个人信息维护</a></li>
-			  <li class="layui-nav-item"><a href="s">学生成绩管理</a></li>
-			  <li class="layui-nav-item"><a href="">用户管理</a></li>  
+			  <li class="layui-nav-item"><a href="index">首页</a></li>
+			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
+			    <dl class="layui-nav-child">
+			      <dd><a href="s">学生成绩查询</a></dd>
+			      <dd><a href="">用户信息维护</a></dd>
+			    </dl>
+			  </li>
+			  <li class="layui-nav-item layui-this"><a href="javascript:;">学生管理</a>
+			    <dl class="layui-nav-child">
+			      <dd><a href="s">学生成绩管理</a></dd>
+			      <dd><a href="">学生信息管理</a></dd>
+			    </dl>
+			  </li>
 		</ul>
+		<!-- 1.2、头部右区域 -->
+		 <ul class="layui-nav layui-layout-right">
+	       <li class="layui-nav-item">
+	         <a href="javascript:;">
+	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+	           舞居<!-- <security:authentication property="username"/> -->
+	         </a>
+	       </li>
+	       <li class="layui-nav-item"><a href="">登陆</a></li>
+	     </ul>
 	  </div><!-- 1、顶部导航结束 -->
   </div>
   
