@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>首页</title>
+<title>欢迎您的到来！</title>
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
@@ -12,26 +12,28 @@
 </style>
 </head>
 <body>
-<div class="layui-container layui-col-lg12">
-  <div class="layui-row">
-    <div class="layui-col-lg12">
-    	<!-- 顶部导航开始 -->
-		  	<ul class="layui-nav layui-bg-molv" lay-filter="">
-			  <li class="layui-nav-item"><a href="javascript:;">学生信息管理系统</a></li>
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+	  <div class="layui-header">
+	  <!-- 顶部导航开始 -->
+	    <div class="layui-logo">学生信息管理系统</div>
+	    <!-- 头部区域（可配合layui已有的水平导航） -->
+	    <ul class="layui-nav layui-layout-left">
 			  <li class="layui-nav-item layui-this"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="">个人成绩</a></li>
 			  <li class="layui-nav-item"><a href="">个人信息维护</a></li>
 			  <li class="layui-nav-item"><a href="s">学生成绩管理</a></li>
 			  <li class="layui-nav-item"><a href="">用户管理</a></li>  
-			</ul>
-			 <!-- 顶部导航结束 -->
-    </div>
+		</ul>
+	  <!-- 顶部导航结束 -->
+	  </div>
   </div>
-  <div class="layui-row contro">&nbsp;</div>
-  <div class="layui-row">
+  <!-- <div class="layui-row contro">&nbsp;</div> -->
+  <div class="layui-container layui-col-lg12">
+  <!-- 内容主体区域 -->
   	<div class="layui-col-lg12">
-  		<div class="layui-carousel" id="test1">
-		  <div carousel-item>
+  		<div class="layui-carousel" id="test1" lay-filter="test1">
+		  <div carousel-item="">
 		    <div><img src="image/2019091110495001.jpg"/></div>
 		    <div><img src="image/2019091110500502.jpg"/></div>
 		    <div><img src="image/2019062417174203.jpg"/></div>
@@ -46,8 +48,8 @@
   <div class="layui-footer" style="text-align: center;">
     <!-- 4、底部固定区域 -->
     © xcn团队
-  </div>  
-</div>
+  </div>
+   
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script>
