@@ -4,78 +4,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>学生成绩信息管理</title>
+<title>学生成绩信息管理系统</title>
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo">layui 后台布局</div>
-    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <div class="layui-logo">学生成绩信息管理系统</div>
+    <!-- 1、头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
-        </dl>
-      </li>
+      <li class="layui-nav-item"><a href="">首页</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">舞居
         </a>
-        <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
-        </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="">登出</a></li>
     </ul>
   </div>
   
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
-      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <!-- 2、左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">所有商品</a>
+          <a class="" href="javascript:;">学生信息管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="">超链接</a></dd>
+            <dd><a href="javascript:;">成绩添加</a></dd>
+            <dd><a href="javascript:;">成绩更新</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">解决方案</a>
+          <a href="javascript:;">学生用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="">超链接</a></dd>
+            <dd><a href="javascript:;">用户添加</a></dd>
+            <dd><a href="javascript:;">用户更新</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="">云市场</a></li>
-        <li class="layui-nav-item"><a href="">发布商品</a></li>
       </ul>
     </div>
   </div>
   
   <div class="layui-body">
-    <!-- 内容主体区域 -->
+    <!-- 3、内容主体区域 -->
     <div style="padding: 15px;">
     	<table class="layui-hide" id="test" lay-filter="test"></table>
     </div>
   </div>
   
   <div class="layui-footer">
-    <!-- 底部固定区域 -->
+    <!-- 4、底部固定区域 -->
     © layui.com - 底部固定区域
   </div>
 </div>
@@ -87,20 +67,21 @@
   </div>
 </script>
 <script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">修&nbsp;&nbsp;&nbsp;改</a>
 </script>
-<!-- 成绩修改表单，默认为不可见 -->
+
+<!-- 1、成绩修改功能表单，默认为不可见 -->
 <div style="display: none" id="EditDiv">
 	<form class="layui-form" action="" lay-filter="FormFilter">
 	<input type="hidden" name="id"/>
   <div class="layui-form-item">
     <label class="layui-form-label">学生姓名</label>
     <div class="layui-input-block">
-      <input type="text" name="userid" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+      <input type="text" name="userid" required  lay-verify="required" placeholder="请输入学生姓名" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">年级</label>
+    <label class="layui-form-label">学生年级</label>
     <div class="layui-input-block">
       <select name="gradeid" lay-verify="required" id="gradeidSel">
         <option value="-1">---请选择---</option>
@@ -108,27 +89,27 @@
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">英语</label>
+    <label class="layui-form-label">英语成绩</label>
     <div class="layui-input-inline">
-      <input type="text" name="english" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      <input type="text" name="english" required lay-verify="required" placeholder="请输入英语成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">政治</label>
+    <label class="layui-form-label">政治成绩</label>
     <div class="layui-input-inline">
-      <input type="text" name="politics" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      <input type="text" name="politics" required lay-verify="required" placeholder="请输入政治成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">专业课一</label>
+    <label class="layui-form-label">专业课一成绩</label>
     <div class="layui-input-inline">
-      <input type="text" name="major1" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">专业课二</label>
+    <label class="layui-form-label">专业课二成绩</label>
     <div class="layui-input-inline">
-      <input type="text" name="major2" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      <input type="text" name="major2" required lay-verify="required" placeholder="请输入专业课二成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
@@ -138,8 +119,9 @@
     </div>
   </div>
 </form>
-</div>
-<!-- 表单结束 -->
+</div><!-- 1、成绩修改功能表单结束 -->
+
+
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script>
@@ -159,13 +141,13 @@ layui.use(['table','form'], function(){
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-      ,{field:'userid', title:'学生姓名', width:120}
-      ,{field:'gradeid', title:'年级', width:150, sort: true}
-      ,{field:'english', title:'英语', width:80, sort: true}
-      ,{field:'politics', title:'政治', width:100, sort: true}
-      ,{field:'major1', title:'专业课一', width:100, sort: true}
-      ,{field:'major2', title:'专业课二', sort: true}
-      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+      ,{field:'userid', title:'学生姓名', width:130, sort: true}
+      ,{field:'gradeid', title:'学生年级', width:100, sort: true}
+      ,{field:'english', title:'英语成绩', width:130, sort: true}
+      ,{field:'politics', title:'政治成绩', width:130, sort: true}
+      ,{field:'major1', title:'专业课一成绩', width:140, sort: true}
+      ,{field:'major2', title:'专业课二成绩', width:140, sort: true}
+      ,{fixed: 'right', title:'操 作', toolbar: '#barDemo', sort: true}
     ]]
     ,page: true
     ,parseData: function(res){ //res 即为原始返回的数据
