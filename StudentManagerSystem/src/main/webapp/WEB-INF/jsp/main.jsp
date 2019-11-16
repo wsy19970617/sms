@@ -27,7 +27,7 @@
   
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
-      <!-- 2、左侧导航区域（可配合layui已有的垂直导航） -->
+      <!-- 2.1、左侧导航区域：学生信息管理 -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">学生信息管理</a>
@@ -35,7 +35,10 @@
             <dd><a href="javascript:;" id="addScore">成绩添加</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item">
+      </ul>
+      <!-- 2.2、左侧导航区域：学生用户管理 -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">学生用户管理</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">用户添加</a></dd>
@@ -67,6 +70,7 @@
 </script>
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">修&nbsp;&nbsp;&nbsp;改</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删&nbsp;&nbsp;&nbsp;除</a>
 </script>
 
 <!-- 1、成绩修改功能表单，默认为不可见 -->
@@ -89,25 +93,25 @@
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">英语成绩</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
       <input type="text" name="english" required lay-verify="required" placeholder="请输入英语成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">政治成绩</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
       <input type="text" name="politics" required lay-verify="required" placeholder="请输入政治成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">专业课一成绩</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
       <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">专业课二成绩</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
       <input type="text" name="major2" required lay-verify="required" placeholder="请输入专业课二成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
@@ -119,7 +123,8 @@
   </div>
 </form>
 </div><!-- 1、成绩修改功能表单结束 -->
-<!-- 1、成绩添加功能表单，默认为不可见 -->
+
+<!-- 2、成绩添加功能表单，默认为不可见 -->
 <div style="display: none" id="AddDiv">
 	<form class="layui-form" action="" lay-filter="addFormFilter">
 	<input type="hidden" name="id"/>
@@ -138,25 +143,25 @@
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">英语成绩</label>
+    <label class="layui-input-block">英语成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="english" required lay-verify="required" placeholder="请输入英语成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">政治成绩</label>
+    <label class="layui-input-block">政治成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="politics" required lay-verify="required" placeholder="请输入政治成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">专业课一成绩</label>
+    <label class="layui-input-block">专业课一成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="major1" required lay-verify="required" placeholder="请输入专业课一成绩" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">专业课二成绩</label>
+    <label class="layui-input-block">专业课二成绩</label>
     <div class="layui-input-inline">
       <input type="text" name="major2" required lay-verify="required" placeholder="请输入专业课二成绩" autocomplete="off" class="layui-input">
     </div>
@@ -168,7 +173,7 @@
     </div>
   </div>
 </form>
-</div><!-- 1、成绩添加功能表单结束 -->
+</div><!-- 2、成绩添加功能表单结束 -->
 
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -232,10 +237,6 @@ layui.use(['table','form'], function(){
       case 'isAll':
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
-      	// ④自定义头工具栏右侧图标 - 提示
-      case 'LAYTABLE_TIPS':
-        layer.alert('这是工具栏右侧自定义的一个图标按钮');
-      break;
     };
   });
   
@@ -287,18 +288,58 @@ layui.use(['table','form'], function(){
 	  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
   });
 
-  
+  /* 5、监听操作列事件之删除功能c */
+  table.on('tool(test)', function(obj){
+	  var data = obj.data;
+	  if (obj.event === 'del') {
+			//弹出删除确认框
+			layer.confirm('真的删除行么', function(index) {//如果点击确定yes后调用
+				//layui.jquery 找到 jQuery(url,[data],[callback],[type])
+				layui.jquery.post("score/delete", 
+				{//这里传参数,data中找id
+					id : data.id
+				//function(data){console.log("----"+data)}
+				}, function(ret) {//成功时的回调函数，服务器返回消息后对页面进行处理
+					if (ret.code == "1") {//删除成功， 刷新当前页表格
+						layer.msg(ret.msg,//删除成功的消息
+						{
+							icon : 1,
+							time : 1500
+						//1.5s后关闭(如果不配置，默认3s)
+						//持续多久自动关闭
+						}, function() {//成功弹出消息框时候调用
+							obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
+							layer.close(index);//关闭弹出框
+							table.reload("test", {
+								url : "book/list"
+							});//重新加载表单（id=test）(表单重载)
+						});
+					} else if (ret.code == "-1") { //删除失败
+						layer.alert(ret.msg, {
+							icon : 2
+						}, function() {
+							layer.close(index);
+						});
+					}
+				});
+			});
+	
+		}
+    });
 });
 </script>
 <script type="text/javascript">
+/* 0、表格功能all */
 layui.use(['table','form'], function(){
 	var table = layui.table;
-	 var form=layui.form;
+	var form=layui.form;
+	 
+	/* 4、监听左侧栏操作列事件之年级添加回显功能a */
 	$("#addScore").click(function(){
 		layer.open({
 			type:1,
 			content:$("#AddDiv"),
-			area:['35%','78%'],
+			area:['35%','70%'],
 			success: function(layero, index){
 				 form.val("addFormFilter",{"gradeid":"-1"});
 				 layui.$("#addGradeidSel").empty();
@@ -313,27 +354,28 @@ layui.use(['table','form'], function(){
 			}	
         });
 	});
-	 /* 3、监听操作列事件之年级提交功能b */
-	  form.on('submit(addForm)', function(data){
-		  layui.$.post("score/update",data.field,function(res){
-			  layer.closeAll();
-				if(res.code==0){	
-					table.reload('test', {
-						  url: 'score/list'
-						});
-				}else{
-					layer.msg(res.msg, 
-						{
-						  icon: 2,
-						  time: 3000 //2秒关闭（如果不配置，默认是3秒）
-						}, function(){
-						  
-						});
-				}
-			  });
-		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-	  });
-});
+	
+	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
+	 form.on('submit(addForm)', function(data){
+		 layui.$.post("score/update",data.field,function(res){
+		  layer.closeAll();
+			if(res.code==0){	
+				table.reload('test', {
+					  url: 'score/list'
+					});
+			}else{
+				layer.msg(res.msg, 
+					{
+					  icon: 2,
+					  time: 3000 //2秒关闭（如果不配置，默认是3秒）
+					}, function(){
+					  
+					});
+			}
+		 });
+		 return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+	 });
+	});
 </script>
 </body>
 </html>

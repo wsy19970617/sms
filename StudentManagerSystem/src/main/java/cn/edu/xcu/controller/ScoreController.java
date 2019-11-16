@@ -61,5 +61,20 @@ public class ScoreController {
 		return result;
 	}
 	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public Map<String, Object> delete(Integer id) {
+		Map<String, Object> ret = new HashMap<>();
+		boolean result = iScoreService.removeById(id);
+		if (result) {
+			ret.put("code", 1);
+			ret.put("msg", "删除成功");
+		} else {
+			ret.put("code", -1);
+			ret.put("msg", "删除失败");
+		}
+		return ret;
+	}
+	
 }
 
