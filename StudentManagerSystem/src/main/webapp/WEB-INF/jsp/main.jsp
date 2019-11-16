@@ -339,7 +339,7 @@ layui.use(['table','form'], function(){
 							obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
 							layer.close(index);//关闭弹出框
 							table.reload("test", {
-								url : "book/list"
+								url : "score/list"
 							});//重新加载表单（id=test）(表单重载)
 						});
 					} else if (ret.code == "-1") { //删除失败
@@ -381,9 +381,7 @@ layui.use(['table','form'], function(){
 				   });
 			}	
         });
-	});
-<<<<<<< HEAD
-	
+	});	
 	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
 	 form.on('submit(addForm)', function(data){
 		 layui.$.post("score/update",data.field,function(res){
@@ -404,8 +402,6 @@ layui.use(['table','form'], function(){
 		 });
 		 return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 	 });
-	});
-=======
 	 /* 3、监听操作列事件之年级提交功能b */
 	  form.on('submit(addForm)', function(data){
 		  layui.$.post("score/update",data.field,function(res){
@@ -428,15 +424,14 @@ layui.use(['table','form'], function(){
 	  });
 	  /* 3、监听操作列事件之搜索功能 */
 	  form.on('submit(searchFilter)', function(data){
-			table.reload('test', {
-				url: 'score/list'
-				,where: data.field //设定异步数据接口的额外参数
-			});
-				  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+		table.reload('test', {
+			url: 'score/list'
+			,where: data.field //设定异步数据接口的额外参数
+		});
+		return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
 			
 	  });
 });
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 </script>
 </body>
 </html>
