@@ -1,10 +1,8 @@
 package cn.edu.xcu.controller;
 
 import java.util.HashMap;
-<<<<<<< HEAD
-=======
+
 import java.util.List;
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
