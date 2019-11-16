@@ -180,23 +180,17 @@ layui.use(['table','form'], function(){
   table.render({
     elem: '#test'
     ,url:'score/list'
-    ,toolbar: '#toolbarDemo' // ①开启头部工具栏，并为其绑定左侧模板
-    ,defaultToolbar: ['filter', 'exports', 'print', { // ②自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-      title: '提示'
-      ,layEvent: 'LAYTABLE_TIPS'
-      ,icon: 'layui-icon-tips'
-    }]
     ,title: '用户数据表'
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-      ,{field:'userid', title:'学生姓名', width:130, sort: true}
+      ,{field:'userid', title:'学生姓名', width:130}
       ,{field:'gradeid', title:'学生年级', width:110, sort: true}
       ,{field:'english', title:'英语成绩', width:130, sort: true}
       ,{field:'politics', title:'政治成绩', width:130, sort: true}
       ,{field:'major1', title:'专业课一成绩', width:140, sort: true}
       ,{field:'major2', title:'专业课二成绩', width:140, sort: true}
-      ,{fixed: 'right', title:'操 作', toolbar: '#barDemo', sort: true}
+      ,{fixed: 'right', title:'操 作', toolbar: '#barDemo'}
     ]]
     ,page: true
     ,parseData: function(res){ //res 即为原始返回的数据
