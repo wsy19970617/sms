@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>欢迎您的到来！</title>
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
-
+	.layui-container{padding: 0px;margin: 0px;}
 	.contro{height:20vh;}
 	.controWidth{width:100vw;height: 430px;}
 	.contro{height:20vh;} 
@@ -21,7 +22,7 @@
   <div class="layui-layout layui-layout-admin">
 	  <div class="layui-header">
 	  <!-- 1、顶部导航开始 -->
-	    <div class="layui-logo">学生信息管理系统</div>
+	    <div class="layui-logo">教务管理系统</div>
 	    <!-- 1.1、头部左区域 -->
 	    <ul class="layui-nav layui-layout-left">
 			  <li class="layui-nav-item layui-this"><a href="index">首页</a></li>
@@ -34,7 +35,7 @@
 			  <li class="layui-nav-item"><a href="javascript:;">学生管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="">学生信息管理</a></dd>
+			      <dd><a href="mes">学生信息管理</a></dd>
 			    </dl>
 			  </li>
 		 </ul>
@@ -48,7 +49,7 @@
 	       </li>
 	       <li class="layui-nav-item"><a href="">登陆</a></li>
 	     </ul>
-	  <!-- 顶部导航结束 -->
+	  <!-- 1、顶部导航结束 -->
 	  </div>
   </div>
   
