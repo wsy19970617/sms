@@ -20,11 +20,12 @@
 			<!-- 1.1、头部左区域 -->
 			<ul class="layui-nav layui-layout-left">
 				<li class="layui-nav-item"><a href="index">首页</a></li>
-				<li class="layui-nav-item"><a href="javascript:;">用户管理</a>
+				<li class="layui-nav-item layui-this"><a href="javascript:;">用户管理</a>
 					<dl class="layui-nav-child">
 						<dd><a href="ss">个人成绩查询</a></dd>
 			      		<dd><a href="">个人信息维护</a></dd>
-					</dl></li>
+					</dl>
+				</li>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
 			  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
 			    <dl class="layui-nav-child">
@@ -33,6 +34,16 @@
 			    </dl>
 			  </li>
 			  </security:authorize>
+				<li class="layui-nav-item"><a href="javascript:;">学生管理</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="s">学生成绩管理</a>
+						</dd>
+						<dd>
+							<a href="mes">学生信息管理</a>
+						</dd>
+					</dl></li>
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 			</ul>
 			<!-- 1.2、头部右区域 -->
 		 <ul class="layui-nav layui-layout-right">
