@@ -382,7 +382,7 @@ layui.use(['table','form'], function(){
 				   });
 			}	
         });
-
+  
 	});
 	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
 	 form.on('submit(addForm)', function(data){
