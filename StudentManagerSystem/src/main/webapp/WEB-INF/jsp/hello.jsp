@@ -18,8 +18,7 @@
 	.controwidth{width:100vw; height:430px;}
 </style>
 </head>
-<body>
-<body class="layui-layout-body">
+<body class="layui-layout-body layui-bg-black" >
   <div class="layui-layout layui-layout-admin">
 	  <div class="layui-header">
 	  <!-- 1、顶部导航开始 -->
@@ -60,23 +59,26 @@
   <!-- <div class="layui-row contro">&nbsp;</div> -->
   <div class="layui-container layui-col-lg12">
   <!-- 内容主体区域 -->
+  <div class="contro">&nbsp;</div>
   	<div class="layui-col-lg12">
   		<div class="layui-carousel" id="test1" lay-filter="test1">
 		  <div carousel-item="">
-		    <div><img src="image/2019091110495001.jpg" class="controWidth"/></div>
-		    <div><img src="image/2019091110500502.jpg" class="controWidth"/></div>
-		    <div><img src="image/2019062417174203.jpg" class="controWidth"/></div>
-		    <div><img src="image/2019062416225804.jpg" class="controWidth"/></div>
-		    <div><img src="image/201962505.jpg" class="controWidth"/></div>
-		    <div><img src="image/XUEXIQIANGGUO06.jpg" class="controWidth"/></div>
+		    <div><img src="${pageContext.request.contextPath }/image/2019091110495001.jpg" class="controWidth"/></div>
+		    <div><img src="${pageContext.request.contextPath }/image/2019091110500502.jpg" class="controWidth"/></div>
+		    <div><img src="${pageContext.request.contextPath }/image/2019062417174203.jpg" class="controWidth"/></div>
+		    <div><img src="${pageContext.request.contextPath }/image/2019062416225804.jpg" class="controWidth"/></div>
+		    <div><img src="${pageContext.request.contextPath }/image/201962505.jpg" class="controWidth"/></div>
+		    <div><img src="${pageContext.request.contextPath }/image/XUEXIQIANGGUO06.jpg" class="controWidth"/></div>
 		  </div>
 		</div>
   	</div>
   </div>
-
-  <div class="layui-footer footer footer-doc layui-col-lg12">
+	
+  <div class="layui-footer footer footer-doc layui-col-lg12" style="text-align: center;">
     <!-- 3、底部固定区域 -->
-    <p class=" layui-bg-black" style="padding: 6vw; text-align:center;">&copy; 2019 dcn 团队</p>
+    <div class="contro">&nbsp;</div>
+    	&copy; 2019 dcn 团队
+    
   </div> 
 <script src="${pageContext.request.contextPath }/bower_components/layui/dist/layui.js"></script>
 <script src="${pageContext.request.contextPath }/bower_components/jquery/dist/jquery.min.js"></script>
