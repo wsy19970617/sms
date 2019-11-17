@@ -101,18 +101,4 @@ public class UserController {
 		return iUserService.list();
 	}
 
-	@RequestMapping("/list")
-	public IPage<User> list(
-			@RequestParam(defaultValue = "-1",required = false)int userid,
-			@RequestParam(defaultValue = "1",required = false)int page,
-			@RequestParam(defaultValue = "2",required = false)int limit){
-		IPage<User> toWhichPage=new Page<>(page,limit);
-		QueryWrapper<User> wrapper=new QueryWrapper<>();//写条件类
-		if(userid!=-1) {
-			wrapper.eq("userid", userid);
-		}
-		IPage<User> iPage=iUserService.page(toWhichPage,wrapper);
-		
-		return iPage;
-	}
 }
