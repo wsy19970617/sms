@@ -82,16 +82,14 @@ layui.use('element', function(){
 <script>
 /* 0、表格功能all */
 layui.use('table', function(){
-  var table = layui.table;
-    
+  var table = layui.table; 
   /* 1、表格遍历显示功能a */
   table.render({
     elem: '#test1'
-    ,url:'score/list'
+    ,url:'score/personScore?username=<security:authentication property="name"/>'
     ,title: '用户数据表'
     ,cols: [[
-     
-      {field:'id', title:'学号ID',  fixed: 'left', unresize: true, sort: true}
+      {field:'id', title:'成绩ID',  fixed: 'left'}
       ,{field:'userid', title:'学生姓名', width: 180, sort: true}
       ,{field:'gradeid', title:'学生年级', width: 180, sort: true}
       ,{field:'english', title:'英语成绩', width: 180, sort: true}

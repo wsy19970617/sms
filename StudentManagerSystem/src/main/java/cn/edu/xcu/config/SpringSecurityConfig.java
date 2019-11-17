@@ -25,7 +25,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	            .and()
 	        .formLogin().usernameParameter("username").passwordParameter("pwd").loginPage("/toLogin")
 	        .defaultSuccessUrl("/index")
-	        .permitAll();
+	        .permitAll().and().logout().logoutSuccessUrl("/toLogin");
 	}
 	
 	@Override

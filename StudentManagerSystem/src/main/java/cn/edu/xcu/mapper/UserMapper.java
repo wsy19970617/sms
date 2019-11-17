@@ -24,6 +24,6 @@ public interface UserMapper extends BaseMapper<User> {
 		@Result(many=@Many(select="cn.edu.xcu.mapper.RoleMapper.findByUserId"),column="id",property="roles")
 	})
 	User findByName(String username);
-	@Select("select t_user.username from t_user where username=#{username}")
+	@Select("select t_user.username,t_user.id from t_user where username=#{username}")
 	User findExitOne(String name);
 }

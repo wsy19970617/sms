@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-11-15
  */
 public interface IScoreService extends IService<Score> {
-      Score findByUserId(int userid);
+      Score findScoreByUserId(int userid);
 }

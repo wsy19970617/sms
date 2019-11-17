@@ -18,11 +18,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, Score> implements IScoreService {
-    @Autowired
-    private ScoreMapper scoreMapper;
 	@Override
-	public Score findByUserId(int userid) {
-		Score score=scoreMapper.findByUserId(userid);
+	public Score findScoreByUserId(int userid) {
+		Score score=getBaseMapper().findScoreById(userid);
 		return score;
 	}
 
