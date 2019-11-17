@@ -33,12 +33,12 @@
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">
-			  <li class="layui-nav-item"><a href="javascript:;">学生管理</a>
-			    <dl class="layui-nav-child">
-			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="mes">学生信息管理</a></dd>
-			    </dl>
-			  </li>
+				  <li class="layui-nav-item"><a href="javascript:;">学生管理</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="s">学生成绩管理</a></dd>
+				      <dd><a href="mes">学生信息管理</a></dd>
+				    </dl>
+				  </li>
 			  </security:authorize>
 		 </ul>
 		 <!-- 1.2、头部右区域 -->

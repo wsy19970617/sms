@@ -23,17 +23,17 @@
 			  <li class="layui-nav-item"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
-			      <dd><a href="s">个人成绩查询</a></dd>
+			      <dd><a href="ss">个人成绩查询</a></dd>
 			      <dd><a href="">个人信息维护</a></dd>
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">
-			  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
-			    <dl class="layui-nav-child">
-			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="mes">学生信息管理</a></dd>
-			    </dl>
-			  </li>
+				  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="s">学生成绩管理</a></dd>
+				      <dd><a href="mes">学生信息管理</a></dd>
+				    </dl>
+				  </li>
 			  </security:authorize>
 		</ul>
 		<!-- 1.2、头部右区域 -->
@@ -234,8 +234,8 @@ layui.use(['table','form'], function(){
     ,title: '学生成绩表'
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-      ,{field:'userid', title:'学生姓名', width:130}
+      ,{field:'id', title:'学号ID', width:100, fixed: 'left', unresize: true, sort: true}
+      ,{field:'userid', title:'学生姓名', width:130, sort: true}
       ,{field:'gradeid', title:'学生年级', width:110, sort: true}
       ,{field:'english', title:'英语成绩', width:130, sort: true}
       ,{field:'politics', title:'政治成绩', width:130, sort: true}

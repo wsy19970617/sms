@@ -28,12 +28,12 @@
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">
-			  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
-			    <dl class="layui-nav-child">
-			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="mes">学生信息管理</a></dd>
-			    </dl>
-			  </li>
+				  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
+				    <dl class="layui-nav-child">
+				      <dd><a href="s">学生成绩管理</a></dd>
+				      <dd><a href="mes">学生信息管理</a></dd>
+				    </dl>
+				  </li>
 			  </security:authorize>
 		</ul>
 		<!-- 1.2、头部右区域 -->
@@ -64,7 +64,7 @@
 					        <div class="layui-inline">
 					          <label class="layui-form-label">用户名</label>
 					          <div class="layui-input-block">
-					            <input type="text" name="username" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+					            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
 					          </div>
 					        </div>
 					        <div class="layui-inline">
@@ -116,9 +116,9 @@
 	    ,title: '学生信息表'
 	    ,cols: [[
 	      {type: 'checkbox', fixed: 'left', width:100}
-	      ,{field:'id', title:'ID', width:100, fixed: 'left', unresize: true, sort: true}
-	      ,{field:'username', title:'用户名', width:300, sort: true}
-	      ,{field:'pwd', title:'学生用户密码', width:300}
+	      ,{field:'id', title:'学号ID', width:100, fixed: 'left', unresize: true, sort: true}
+	      ,{field:'username', title:'学生用户名', width:300, sort: true}
+	      ,{field:'pwd', title:'学生用户密码', width:300, sort: true}
 	      ,{fixed: 'right', title:'操 作', toolbar: '#barDemo'}
 	    ]]
 	    ,page: true

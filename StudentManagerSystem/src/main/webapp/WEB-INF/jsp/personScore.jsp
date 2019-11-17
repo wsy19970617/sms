@@ -27,23 +27,13 @@
 					</dl>
 				</li>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
-			  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
-			    <dl class="layui-nav-child">
-			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="mes">学生信息管理</a></dd>
-			    </dl>
-			  </li>
-			  </security:authorize>
-				<li class="layui-nav-item"><a href="javascript:;">学生管理</a>
-					<dl class="layui-nav-child">
-						<dd>
-							<a href="s">学生成绩管理</a>
-						</dd>
-						<dd>
-							<a href="mes">学生信息管理</a>
-						</dd>
-					</dl></li>
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
+				    <li class="layui-nav-item"><a href="javascript:;">学生管理</a>
+				      <dl class="layui-nav-child">
+				         <dd><a href="s">学生成绩管理</a></dd>
+				      	 <dd><a href="mes">学生信息管理</a></dd>
+				      </dl>
+				    </li>
+			    </security:authorize>
 			</ul>
 			<!-- 1.2、头部右区域 -->
 		 <ul class="layui-nav layui-layout-right">
@@ -53,7 +43,7 @@
 	           <security:authentication property="name"/>
 	         </a>
 	       </li>
-	       <li class="layui-nav-item"><a href="">登陆</a></li>
+	       <li class="layui-nav-item"><a href="logout">退出</a></li>
 	     </ul>
 	  </div><!-- 1、顶部导航结束 -->
 	</div>
@@ -101,8 +91,8 @@ layui.use('table', function(){
     ,title: '用户数据表'
     ,cols: [[
      
-      {field:'id', title:'ID',  fixed: 'left', unresize: true, sort: true}
-      ,{field:'userid', title:'学生姓名', width: 180}
+      {field:'id', title:'学号ID',  fixed: 'left', unresize: true, sort: true}
+      ,{field:'userid', title:'学生姓名', width: 180, sort: true}
       ,{field:'gradeid', title:'学生年级', width: 180, sort: true}
       ,{field:'english', title:'英语成绩', width: 180, sort: true}
       ,{field:'politics', title:'政治成绩', width: 180, sort: true}
