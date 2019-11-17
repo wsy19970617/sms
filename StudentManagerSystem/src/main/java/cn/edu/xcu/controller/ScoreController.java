@@ -1,7 +1,8 @@
 package cn.edu.xcu.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import cn.edu.xcu.entity.Score;
+import cn.edu.xcu.entity.User;
 import cn.edu.xcu.service.IScoreService;
 import cn.edu.xcu.service.IUserService;
 
@@ -80,6 +82,14 @@ public class ScoreController {
 		}
 		return ret;
 	}
+	
+	@RequestMapping("/findScores")
+	public List<Score> findScores(Integer userid){
+		Score score= iScoreService.findByUserId(userid);
+		
+		return new ArrayList<>();
+	}
+
 	
 }
 

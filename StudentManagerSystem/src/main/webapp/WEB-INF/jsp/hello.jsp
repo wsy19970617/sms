@@ -9,13 +9,10 @@
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
-<<<<<<< HEAD
 	.contro{height:20vh;}
 	.controWidth{width:100vw;height: 430px;}
-=======
 	.contro{height:20vh;} 
 	.controwidth{width:100vw; height:430px;}
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 </style>
 </head>
 <body>
@@ -29,7 +26,7 @@
 			  <li class="layui-nav-item layui-this"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
-			      <dd><a href="s">学生成绩查询</a></dd>
+			      <dd><a href="ss">学生成绩查询</a></dd>
 			      <dd><a href="">用户信息维护</a></dd>
 			    </dl>
 			  </li>
@@ -55,7 +52,6 @@
   </div>
   
   <!-- <div class="layui-row contro">&nbsp;</div> -->
-<<<<<<< HEAD
   <div class="layui-container layui-col-lg12">
   <!-- 内容主体区域 -->
   	<div class="layui-col-lg12">
@@ -70,7 +66,6 @@
 		  </div>
 		</div>
   	</div>
-=======
   <div class="layui-layout layui-layout-admin">
 	  <div class="layui-container layui-col-lg12">
 	  <!-- 2、内容主体区域 -->
@@ -87,7 +82,6 @@
 			</div>
 	  	</div>
 	  </div>
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
   </div>
 
   <div class="layui-footer footer footer-doc layui-col-lg12">

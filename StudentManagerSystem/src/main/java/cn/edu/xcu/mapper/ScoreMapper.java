@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2019-11-15
  */
 public interface ScoreMapper extends BaseMapper<Score> {
-
+       Score findByUserId(int userid);
 }

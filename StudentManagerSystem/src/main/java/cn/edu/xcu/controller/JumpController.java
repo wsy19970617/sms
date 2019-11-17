@@ -16,4 +16,8 @@ public class JumpController {
 	public String sss() {
 		return "login";
 	}
+	@RequestMapping("/ss")
+	public String ss() {
+		return "personalInformation";
+	}
 }
