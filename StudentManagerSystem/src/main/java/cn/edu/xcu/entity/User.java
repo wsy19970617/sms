@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -24,7 +25,7 @@ public class User implements Serializable {
     private String username;
 
     private String pwd;
-
+    private List<Role> roles;
 
     public Integer getId() {
         return id;
@@ -50,7 +51,15 @@ public class User implements Serializable {
         this.pwd = pwd;
     }
 
-    @Override
+    public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	@Override
     public String toString() {
         return "User{" +
         "id=" + id +

@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.xcu.mapper.UserMapper">
-	<resultMap type="cn.edu.xcu.entity.User" id="baseUserMap">
-		<id column="id" property="id"/>
-		<result column="username" property="username"/>
+	<!-- <resultMap type="cn.edu.xcu.entity.User" id="baseUserMap">
+		<id column="user_id" property="id"/>
+		<result column="user_name" property="username"/>
 		<result column="pwd" property="pwd"/>
+		<collection property="roles" ofType="cn.edu.xcu.entity.Role">
+			<id column="role_id" property="id"/>
+			<result column="role_name" property="name"/>
+			<result column="descri" property="descri"/>
+		</collection>	
 	</resultMap>
 	<select id="findByName" parameterType="string" resultMap="baseUserMap">
-		select * from t_user where username=#{username}
-	</select>
+		select t_user.id as user_id,
+		t_user.name as user_name,
+		t_user.pwd as pwd,
+		t_role.id as role_id,
+		t_role.name as role_name,
+		t_role.descri as descri where t_role.id in ( select roleId from t_user_role where t_user_role.userId=t_user.id) and t_user.name=#{username}
+	</select> -->
 </mapper>
