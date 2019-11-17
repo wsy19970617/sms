@@ -22,6 +22,6 @@ public class JumpController {
 	}
 	@RequestMapping("/ss")
 	public String ssp() {
-		return "personalInformation";
+		return "personScore";
 	}
 }

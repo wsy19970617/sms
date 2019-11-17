@@ -23,7 +23,7 @@
 			  <li class="layui-nav-item"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
-			      <dd><a href="">个人成绩查询</a></dd>
+			      <dd><a href="ss">个人成绩查询</a></dd>
 			      <dd><a href="">个人信息维护</a></dd>
 			    </dl>
 			  </li>
