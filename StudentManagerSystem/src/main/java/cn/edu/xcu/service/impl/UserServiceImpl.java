@@ -1,12 +1,20 @@
 package cn.edu.xcu.service.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import cn.edu.xcu.entity.Role;
 import cn.edu.xcu.entity.User;
 import cn.edu.xcu.mapper.UserMapper;
 import cn.edu.xcu.service.IUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -18,12 +26,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
-	@Autowired
-	private UserMapper userMapper;
 	@Override
-	public User findByUserName(String username) {
-		User user=userMapper.findByName(username);
-		return user;
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user=getBaseMapper().findByName(username);
+		Set<GrantedAuthority> authorities=new HashSet<>();
+		for(Role r:user.getRoles()){
+			authorities.add(new SimpleGrantedAuthority(r.getName()));
+		}
+		return new org.springframework.security.core.userdetails.User(username, user.getPwd(), authorities);
 	}
 
+	@Override
+	public User findExitOne(String username) {
+		User user=getBaseMapper().findExitOne(username);
+		return user;
+	}
+	
 }

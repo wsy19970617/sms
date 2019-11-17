@@ -1,158 +1,143 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>登录</title>
-<link rel="stylesheet" href="bower_components/layui/dist/css/layui.css" type="text/css">
-
-</head>
-<style>
-
-.father {
-	width: 1000px;
-	height: auto;
-	margin: 0 auto;
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/bower_components/layui/dist/css/layui.css">
+<style type="text/css">
+.controHeight {
+	height: 20vh;
 }
 
-.layui-input {
-	width: 300px;
-	line-height: 40px;
-}
-
-.login-main {
-	margin-top: 100px;
-	margin-left: 350px;
-	width: 300px;
-	height: 450px; /* border:1px solid #e6e6e6; */
-}
-
-.layui-form {
-	margin-top: 20px;
-}
-
-.layui-input-inline {
-	margin-top: 30px;
-}
-
-button {
-	width: 300px;
-	height:50px;
-	color:gold;
-	font-size:20px;
-	background:#FFF68F
-}
-
-body{
-background:#E0FFFF
+body {
+	background-color: #2F4056;
 }
 </style>
+</head>
 <body>
+	<div class="layui-container">
+		<div class="layui-row controHeight"></div>
+		<div class="layui-card">
+			<div class="layui-card-header">请登录</div>
+			<div class="layui-card-body">
+				<div class="layui-container">
+					<div class="layui-row">
+						<div class="layui-col-lg2">&nbsp;</div>
+						<div class="layui-col-md6">
+							<!-- 登录表单开始 -->
+							<form class="layui-form" action="" method="post">
+								<div class="layui-form-item">
+									<label class="layui-form-label">账号</label>
+									<div class="layui-input-block">
+										<input type="text" name="username" required
+											lay-verify="required" placeholder="请输入账号" autocomplete="off"
+											class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">密码</label>
+									<div class="layui-input-block">
+										<input type="password" name="pwd" required
+											lay-verify="required" placeholder="请输入密码" autocomplete="off"
+											class="layui-input">
+									</div>
 
-	<div class="father">
-		<div class="login-main">
-			<p style="color: #5FB878; font-size: 25px; text-align: center;">欢迎登录</p>
-			<!-- 登录表单开始 -->
-			<form class="layui-form" method="post">
-				<div class="layui-input-inline">
-					<input type="text" class="layui-input" name="username" required
-						lay-verify="required" placeholder="请输入用户名" autocomplete="off"
-						class="layui-input">
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+										<button type="reset" class="layui-btn layui-btn-primary"
+											id="registerBtn">没有账号？注册一个吧！</button>
+									</div>
+								</div>
+							</form>
+							<!-- 登录表单结束 -->
+						</div>
+						<div class="layui-col-md3"></div>
+					</div>
 				</div>
-				<br>
-				<div class="layui-input-inline">
-					<input type="password" name="pwd" required
-						lay-verify="required" placeholder="请输入密码" autocomplete="off"
-						class="layui-input">
-				</div>
-				<br>
-				<div class="layui-input-inline login-btn">
-					<button lay-submit lay-filter="login" class="layui-btn">登录</button>
-				</div>
-			</form>
-				<div class="layui-input-inline login-btn">
-					<button lay-submit lay-filter="registerBtn" class="layui-btn layui-btn-normal" id="openRegisterForm">没有账号？注册一个吧</button>
-				</div>			
-			<!-- 登录表单结束 -->
+			</div>
 		</div>
 	</div>
-<!-- 注册表单 -->
-<div id="registerForm" style="display: none">
-	<form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
-  <div class="layui-form-item">
-    <label class="layui-form-label">用户名</label>
-    <div class="layui-input-block">
-      <input type="text" required lay-verify="required" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">密码</label>
-    <div class="layui-input-block">
-      <input type="password" required lay-verify="required" name="pwd" placeholder="请输入" autocomplete="off" class="layui-input">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">确认密码</label>
-    <div class="layui-input-block">
-      <input type="password" required lay-verify="required" name="pwd2" placeholder="与上个密码相同" autocomplete="off" class="layui-input">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="doRegisterBtn">立即注册</button>
-    </div>
-  </div>
-</form>
-</div>
-<!-- 注册表单结束 -->
-<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<script src="bower_components/layui/dist/layui.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	layui.use(['layer','form'], function(){
-		  var layer = layui.layer;
-		  var form = layui.form;
-		  <!--打开注册表单-->
-		  $("#openRegisterForm").click(function(){
-			  layer.open({
-				  type: 1, 
-				  content:$("#registerForm"),
-				  area:['35%','70%']
+	<!-- 注册表单开始 -->
+	<div id="registerDiv" style="display: none;">
+		<form class="layui-form" action="">
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">账号</label>
+				<div class="layui-input-block">
+					<input type="text" name="username" required lay-verify="required"
+						placeholder="请输入账号" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">密码</label>
+				<div class="layui-input-block">
+					<input type="password" name="pwd" required lay-verify="required"
+						placeholder="请输入密码" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item layui-col-md6">
+				<label class="layui-form-label">确认密码</label>
+				<div class="layui-input-block">
+					<input type="password" name="pwd2" required lay-verify="required"
+						placeholder="请输入密码" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="registerFilter">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- 注册表单结束 -->
+	<script
+		src="${pageContext.request.contextPath }/bower_components/layui/dist/layui.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/bower_components/jquery/dist/jquery.min.js"></script>
+	<script>
+		//Demo
+		layui.use([ 'form', 'layer' ], function() {
+			var form = layui.form;
+			//弹出注册表单
+			$("#registerBtn").click(function() {
+				layer.open({
+					type : 1,
+					content : $("#registerDiv"),
+					area : [ '35%', '78%' ],
+					title:"注册新用户"
 				});
-		  });
-		  //注册提交按钮监听
-		  form.on('submit(doRegisterBtn)', function(data){
-			  if(data.field.pwd==data.field.pwd2){
-			  layui.$.post("user/add",data.field,function(res){
-				  
-					if(res.code==0){
-						layer.closeAll();	
-						layer.msg("注册成功，马上登录吧", {
-								  icon: 6,
+			})
+			//监听注册提交
+			form.on('submit(registerFilter)', function(data) {
+				if(data.field.pwd==data.field.pwd2){
+					$.post("user/add",data.field,function(res){
+						if(res.code==0){
+							layer.closeAll();	
+							layer.msg("注册成功，开始登录吧", 
+									{icon: 5,time: 2000}, function(){});
+						}else{
+							layer.msg(res.msg, 
+								{
+								  icon: 2,
 								  time: 2000 //2秒关闭（如果不配置，默认是3秒）
 								}, function(){
 								  
 								});
-					}else{
-						layer.msg(res.msg, 
-							{
-							  icon: 5,
-							  time: 3000 //2秒关闭（如果不配置，默认是3秒）
-							}, function(){
-							  
-							});
-					}
-				  });
+						}
+				   });
 				}else{
-					layer.msg('两次密码不同', {icon: 5}); 
+					layer.msg("两次密码不一致，请重新输入",{icon: 5,time: 2000}, function(){});
 				}
-			    return false;
-			  });
-		//登录提交按钮监听
-		  form.on('submit(login)', function(data){
-			  layui.$.post("user/doLogin",data.field);
-		  });  
-	});              
+				return false;
+			});
+		});
 	</script>
 </body>
 </html>
