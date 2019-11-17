@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>     --%>
-<!DOCTYPE html>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -32,22 +31,24 @@
 			      <dd><a href="">个人信息维护</a></dd>
 			    </dl>
 			  </li>
+			  <security:authorize access="hasRole('ROLE_ADMIN')">
 			  <li class="layui-nav-item"><a href="javascript:;">学生管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="s">学生成绩管理</a></dd>
 			      <dd><a href="mes">学生信息管理</a></dd>
 			    </dl>
 			  </li>
+			  </security:authorize>
 		 </ul>
 		 <!-- 1.2、头部右区域 -->
 		 <ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
 	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-	           舞居<!-- <security:authentication property="username"/> -->
+	           <security:authentication property="name"/>
 	         </a>
 	       </li>
-	       <li class="layui-nav-item"><a href="">登陆</a></li>
+	       <li class="layui-nav-item"><a href="logout">退出</a></li>
 	     </ul>
 	  <!-- 1、顶部导航结束 -->
 	  </div>
