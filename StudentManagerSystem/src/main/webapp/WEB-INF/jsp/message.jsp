@@ -110,7 +110,7 @@
 	  /* 1、表格遍历显示功能a */
 	  table.render({
 	    elem: '#test'
-	    ,url:'user/list'
+	    ,url:'user/findAll'
 	    ,title: '学生信息表'
 	    ,cols: [[
 	      {type: 'checkbox', fixed: 'left', width:100}
@@ -137,7 +137,7 @@
 	    var data = obj.data;
 	    if(obj.event === 'del'){
 	    	layer.confirm('确定将该学生用户剔除？', function(index) {
-				layui.jquery.post("user/delete", {
+				layui.jquery.post("user/del", {
 				id : data.id}, function(ret) {//成功时的回调函数，服务器返回消息后对页面进行处理
 					if (ret.code == "1") {//删除成功， 刷新当前页表格
 						layer.msg(ret.msg,//删除成功的消息
@@ -150,7 +150,7 @@
 							obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
 							layer.close(index);//关闭弹出框
 							table.reload("test", {
-								url : "user/list"
+								url : "user/findAll"
 							});//重新加载表单（id=test）(表单重载)
 						});
 					} else if (ret.code == "-1") { //删除失败
@@ -169,7 +169,7 @@
 	  /* 3、监听操作列事件之成绩查询提交功能b */
 	  form.on('submit(searchFilter)', function(data){
 		  table.reload('test', {
-			  url: 'user/list'
+			  url: 'user/findAll'
 			  ,where: data.field //设定异步数据接口的额外参数
 		  });
 		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。	
