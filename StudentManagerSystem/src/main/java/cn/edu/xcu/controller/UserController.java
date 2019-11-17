@@ -1,10 +1,14 @@
 package cn.edu.xcu.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import cn.edu.xcu.entity.Score;
 import cn.edu.xcu.entity.User;
@@ -29,8 +33,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
-	private IUserService iUserService;
-
+	private IUserService iUserService;	
+	@RequestMapping("/list")
+	@ResponseBody
+	public IPage<User> list(
+			@RequestParam(defaultValue = "-1",required = false)int userid,
+			@RequestParam(defaultValue = "1",required = false)int page,
+			@RequestParam(defaultValue = "2",required = false)int limit){
+		IPage<User> toWhichPage=new Page<>(page,limit);
+		QueryWrapper<User> wrapper=new QueryWrapper<>();//写条件类
+		if(userid!=-1) {
+			wrapper.eq("userid", userid);
+		}
+		IPage<User> iPage=iUserService.page(toWhichPage,wrapper);	
+		return iPage;
+	}
 	@RequestMapping("/add")
 	public Map<String, Object> UserAdd(User user) {
 		Map<String, Object> result = new HashMap<>();
