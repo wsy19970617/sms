@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>     --%>
-<!DOCTYPE html>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>欢迎您的到来！</title>
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
+<<<<<<< HEAD
+=======
+	.layui-container{padding: 0px;margin: 0px;}
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 	.contro{height:20vh;}
+<<<<<<< HEAD
 	.controWidth{width:100vw;height: 430px;}
+=======
+	.controWidth{width:100vw;height: 430px;}
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 	.contro{height:20vh;} 
+<<<<<<< HEAD
 	.controwidth{width:100vw; height:430px;}
+=======
+	.controwidth{width:100vw; height:430px;}
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 </style>
 </head>
 <body>
@@ -20,38 +32,49 @@
   <div class="layui-layout layui-layout-admin">
 	  <div class="layui-header">
 	  <!-- 1、顶部导航开始 -->
-	    <div class="layui-logo">学生信息管理系统</div>
+	    <div class="layui-logo">教务管理系统</div>
 	    <!-- 1.1、头部左区域 -->
 	    <ul class="layui-nav layui-layout-left">
 			  <li class="layui-nav-item layui-this"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
+<<<<<<< HEAD
 			      <dd><a href="ss">学生成绩查询</a></dd>
 			      <dd><a href="">用户信息维护</a></dd>
+=======
+			      <dd><a href="s">个人成绩查询</a></dd>
+			      <dd><a href="">个人信息维护</a></dd>
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 			    </dl>
 			  </li>
+			  <security:authorize access="hasRole('ROLE_ADMIN')">
 			  <li class="layui-nav-item"><a href="javascript:;">学生管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="">学生信息管理</a></dd>
+			      <dd><a href="mes">学生信息管理</a></dd>
 			    </dl>
 			  </li>
+			  </security:authorize>
 		 </ul>
 		 <!-- 1.2、头部右区域 -->
 		 <ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
 	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-	           舞居<!-- <security:authentication property="username"/> -->
+	           <security:authentication property="name"/>
 	         </a>
 	       </li>
-	       <li class="layui-nav-item"><a href="">登陆</a></li>
+	       <li class="layui-nav-item"><a href="logout">退出</a></li>
 	     </ul>
-	  <!-- 顶部导航结束 -->
+	  <!-- 1、顶部导航结束 -->
 	  </div>
   </div>
   
+<<<<<<< HEAD
   <!-- <div class="layui-row contro">&nbsp;</div> -->
+=======
+  <!-- <div class="layui-row contro">&nbsp;</div> -->
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
   <div class="layui-container layui-col-lg12">
   <!-- 内容主体区域 -->
   	<div class="layui-col-lg12">
@@ -66,6 +89,10 @@
 		  </div>
 		</div>
   	</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
   <div class="layui-layout layui-layout-admin">
 	  <div class="layui-container layui-col-lg12">
 	  <!-- 2、内容主体区域 -->
@@ -81,14 +108,18 @@
 			  </div>
 			</div>
 	  	</div>
+<<<<<<< HEAD
 	  </div>
+=======
+	  </div>
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
   </div>
 
   <div class="layui-footer footer footer-doc layui-col-lg12">
     <!-- 3、底部固定区域 -->
     <p class=" layui-bg-black" style="padding: 6vw; text-align:center;">&copy; 2019 dcn 团队</p>
   </div>
-   
+</div>  
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script>

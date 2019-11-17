@@ -1,47 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>   --%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>学生成绩管理</title>
 <link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
 	.layui-card-header{border: 0px;}
-</style>
+</style> 
 </head>
 <body class="layui-layout-body">
   <div class="layui-layout layui-layout-admin">
 	  <!-- 1、顶部导航开始 -->
 	  <div class="layui-header">
-	    <div class="layui-logo">学生信息管理系统</div>
+	    <div class="layui-logo">学生管理系统</div>
 	    <!-- 1.1、头部左区域 -->
 	    <ul class="layui-nav layui-layout-left">
 			  <li class="layui-nav-item"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
+<<<<<<< HEAD
 			      <dd><a href="ss">学生成绩查询</a></dd>
 			      <dd><a href="">用户信息维护</a></dd>
+=======
+			      <dd><a href="s">个人成绩查询</a></dd>
+			      <dd><a href="">个人信息维护</a></dd>
+>>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 			    </dl>
 			  </li>
-			  <li class="layui-nav-item layui-this"><a href="javascript:;">学生管理</a>
+			  <security:authorize access="hasRole('ROLE_ADMIN')">
+			  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="s">学生成绩管理</a></dd>
-			      <dd><a href="">学生信息管理</a></dd>
+			      <dd><a href="mes">学生信息管理</a></dd>
 			    </dl>
 			  </li>
+			  </security:authorize>
 		</ul>
 		<!-- 1.2、头部右区域 -->
 		 <ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
 	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-	           舞居<!-- <security:authentication property="username"/> -->
+	          <security:authentication property="name"/>
 	         </a>
 	       </li>
-	       <li class="layui-nav-item"><a href="">登陆</a></li>
+	       <li class="layui-nav-item"><a href="logout">退出</a></li>
 	     </ul>
 	  </div><!-- 1、顶部导航结束 -->
   </div>
@@ -82,7 +90,7 @@
 				  <!-- 2.2、卡片主体结束 -->
 				</div>
 		    </div>
-		  </div> <!-- 2、内容主体区域结束 --> 
+		  </div><!-- 2、内容主体区域结束 --> 
 	  </div>
   </div>
   
@@ -193,12 +201,24 @@
 </form>
 </div><!-- 5、成绩添加功能表单结束 -->
 
+<!-- 6、按钮块 -->
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">修&nbsp;&nbsp;&nbsp;改</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删&nbsp;&nbsp;&nbsp;除</a>
 </script>
+
+<!-- 7、新增，选中块 -->
+<script type="text/html" id="toolbarDemo">
+      <div class="layui-btn-container">
+          <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+          <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+          <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+      </div>
+</script>
+
 <script src="bower_components/layui/dist/layui.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
 <script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
 layui.use('element', function(){
@@ -216,7 +236,7 @@ layui.use(['table','form'], function(){
   table.render({
     elem: '#test'
     ,url:'score/list'
-    ,title: '用户数据表'
+    ,title: '学生成绩表'
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
@@ -369,7 +389,7 @@ layui.use(['table','form'], function(){
 				   });
 			}	
         });
-
+  
 	});
 	 /* 4、监听左侧栏操作列事件之年级添加提交功能b */
 	 form.on('submit(addForm)', function(data){
