@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
-=======
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +13,7 @@
 	href="${pageContext.request.contextPath }/bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.controHeight {height: 20vh;}
-	.controbackground{background: url("/image/登录背景图.jpg")}
+	/* .controbackground{margin: 0 auto; background:url("image/background.jpg") no-repeat; background-size:100vw ;} */
 </style>
 </head>
 <body>

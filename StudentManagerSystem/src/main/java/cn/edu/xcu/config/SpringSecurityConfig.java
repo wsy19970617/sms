@@ -18,7 +18,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//1、让csrf过滤器无效，禁用，否则无法放行
 		http.csrf().disable(); 
-<<<<<<< HEAD
 		http.authorizeRequests()
 			    //2、http请求的安全配置：放行页面，js，css，css.map；permitAll放行所有权限
 	            .antMatchers(
@@ -26,6 +25,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	            		"/**/*.js", 
 	            		"/**/*.css",
 	            		"/**/*.css.map",
+	            		"/**/*.jpg",
 	            		"/user/add")
 	            		.permitAll().anyRequest().authenticated()
 	            //3、拦截器类似作用，hasRole('ROLE_USER')表达式
@@ -41,16 +41,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .and()
 	        //5、登出权限
 	        .logout().permitAll();
-=======
-		http
-	        .authorizeRequests()                                                                
-	            .antMatchers("/toLogin","/**/*.js", "/**/*.css", "/**/*.css.map","/user/add").permitAll()                  
-	           .antMatchers("/**").access("hasRole('ROLE_USER')")                                                              
-	            .and()
-	        .formLogin().usernameParameter("username").passwordParameter("pwd").loginPage("/toLogin")
-	        .defaultSuccessUrl("/index")
-	        .permitAll().and().logout().logoutSuccessUrl("/toLogin");
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 	}
 	
 	@Override
