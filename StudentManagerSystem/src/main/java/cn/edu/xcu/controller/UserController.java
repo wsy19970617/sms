@@ -20,6 +20,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.util.StringUtils;
 
 /**
  * <p>
@@ -37,13 +38,13 @@ public class UserController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public IPage<User> list(
-			@RequestParam(defaultValue = "-1",required = false)int userid,
+			@RequestParam(defaultValue = "",required = false)String username,
 			@RequestParam(defaultValue = "1",required = false)int page,
 			@RequestParam(defaultValue = "2",required = false)int limit){
 		IPage<User> toWhichPage=new Page<>(page,limit);
 		QueryWrapper<User> wrapper=new QueryWrapper<>();//写条件类
-		if(userid!=-1) {
-			wrapper.eq("userid", userid);
+		if(StringUtils.hasText(username)) {
+			wrapper.like("username",username);
 		}
 		IPage<User> iPage=iUserService.page(toWhichPage,wrapper);	
 		return iPage;

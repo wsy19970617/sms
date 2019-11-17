@@ -23,13 +23,8 @@
 			  <li class="layui-nav-item"><a href="index">首页</a></li>
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
-<<<<<<< HEAD
-			      <dd><a href="ss">学生成绩查询</a></dd>
-			      <dd><a href="">用户信息维护</a></dd>
-=======
 			      <dd><a href="s">个人成绩查询</a></dd>
 			      <dd><a href="">个人信息维护</a></dd>
->>>>>>> branch 'master' of https://github.com/wsy19970617/sms
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">

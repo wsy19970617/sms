@@ -64,7 +64,7 @@
 					        <div class="layui-inline">
 					          <label class="layui-form-label">用户名</label>
 					          <div class="layui-input-block">
-					            <input type="text" name="userid" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+					            <input type="text" name="username" placeholder="请输入姓名" autocomplete="off" class="layui-input">
 					          </div>
 					        </div>
 					        <div class="layui-inline">
@@ -112,7 +112,7 @@
 	  /* 1、表格遍历显示功能a */
 	  table.render({
 	    elem: '#test'
-	    ,url:'user/findAll'
+	    ,url:'user/list'
 	    ,title: '学生信息表'
 	    ,cols: [[
 	      {type: 'checkbox', fixed: 'left', width:100}
@@ -152,7 +152,7 @@
 							obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
 							layer.close(index);//关闭弹出框
 							table.reload("test", {
-								url : "user/findAll"
+								url : "user/list"
 							});//重新加载表单（id=test）(表单重载)
 						});
 					} else if (ret.code == "-1") { //删除失败
@@ -171,7 +171,7 @@
 	  /* 3、监听操作列事件之成绩查询提交功能b */
 	  form.on('submit(searchFilter)', function(data){
 		  table.reload('test', {
-			  url: 'user/findAll'
+			  url: 'user/list'
 			  ,where: data.field //设定异步数据接口的额外参数
 		  });
 		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。	

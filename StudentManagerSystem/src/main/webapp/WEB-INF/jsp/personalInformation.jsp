@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
 	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-	           舞居<!-- <security:authentication property="username"/> -->
+	           <security:authentication property="name"/>
 	         </a>
 	       </li>
 	       <li class="layui-nav-item"><a href="">登陆</a></li>
