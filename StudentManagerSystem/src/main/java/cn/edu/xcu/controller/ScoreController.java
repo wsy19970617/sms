@@ -83,11 +83,18 @@ public class ScoreController {
 		return ret;
 	}
 	
-	@RequestMapping("/findScores")
-	public List<Score> findScores(Integer userid){
-		Score score= iScoreService.findByUserId(userid);
-		
-		return new ArrayList<>();
+	@RequestMapping("/personScore")
+	@ResponseBody
+	public IPage<Score> findScores(
+			@RequestParam String username,
+			@RequestParam(defaultValue = "1",required = false)int page,
+			@RequestParam(defaultValue = "2",required = false)int limit){
+		User user=iUserService.findExitOne(username);
+		IPage<Score> toWhichPage=new Page<>(page,limit);
+		QueryWrapper<Score> wrapper=new QueryWrapper<>();//写条件类
+		wrapper.eq("userid", user.getId());
+		IPage<Score> iPage=iScoreService.page(toWhichPage,wrapper);
+		return iPage;
 	}
 
 	
