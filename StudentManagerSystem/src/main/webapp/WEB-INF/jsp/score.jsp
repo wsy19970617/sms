@@ -10,7 +10,7 @@
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
 	.layui-card-header{border: 0px;}
-</style>
+</style> 
 </head>
 <body class="layui-layout-body">
   <div class="layui-layout layui-layout-admin">
