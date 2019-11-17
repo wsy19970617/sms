@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/bower_components/layui/dist/css/layui.css">
 </head>
 <body>
 <script src="bower_components/layui/dist/layui.js"></script>

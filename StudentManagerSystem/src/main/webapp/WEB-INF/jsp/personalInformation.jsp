@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>学生成绩查询</title>
-<link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
 	.layui-card-header{border: 0px;}
@@ -75,8 +75,8 @@
     3、底部固定区域
     <p class=" layui-bg-black" style="padding: 6vw; text-align:center;">&copy; 2019 dcn 团队</p>
   </div> -->
-<script src="bower_components/layui/dist/layui.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/bower_components/layui/dist/layui.js"></script>
+<script src="${pageContext.request.contextPath }/bower_components/jquery/dist/jquery.min.js"></script>
 <script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
 layui.use('element', function(){

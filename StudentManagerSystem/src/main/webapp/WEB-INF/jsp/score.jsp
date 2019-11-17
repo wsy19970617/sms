@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>学生成绩管理</title>
-<link rel="stylesheet" href="bower_components/layui/dist/css/layui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.layui-container{padding: 0px;margin: 0px;}
 	.layui-card-header{border: 0px;}
@@ -211,8 +211,8 @@
       </div>
 </script>
 
-<script src="bower_components/layui/dist/layui.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/bower_components/layui/dist/layui.js"></script>
+<script src="${pageContext.request.contextPath }/bower_components/jquery/dist/jquery.min.js"></script>
 
 <script>
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
