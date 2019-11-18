@@ -12,7 +12,7 @@
 	.layui-card-header{border: 0px;}
 </style>
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body"  style="background-color:rgba(192,192,192,0.25)" >
 	<div class="layui-layout layui-layout-admin">
 		<!-- 1、顶部导航开始 -->
 		<div class="layui-header">
@@ -23,7 +23,7 @@
 				<li class="layui-nav-item layui-this"><a href="javascript:;">用户管理</a>
 					<dl class="layui-nav-child">
 						<dd><a href="ss">个人成绩查询</a></dd>
-			      		<dd><a href="">个人信息维护</a></dd>
+			      		<dd><a href="pm">个人信息维护</a></dd>
 					</dl>
 				</li>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
@@ -39,7 +39,7 @@
 		 <ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
-	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+	           <img src="${pageContext.request.contextPath }/image/timg.jpg" class="layui-nav-img">
 	           <security:authentication property="name"/>
 	         </a>
 	       </li>
@@ -97,7 +97,6 @@ layui.use('table', function(){
       ,{field:'major1', title:'专业课一成绩', width: 180, sort: true}
       ,{field:'major2', title:'专业课二成绩', width: 180, sort: true}
     ]]
-    ,page: true
     ,parseData: function(res){ //res 即为原始返回的数据
 	    return {
 	        "code": 0, //解析接口状态

@@ -26,6 +26,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	            		"/**/*.css",
 	            		"/**/*.css.map",
 	            		"/**/*.jpg",
+	            		"/**/*.png",
 	            		"/user/add")
 	            		.permitAll().anyRequest().authenticated()
 	            //3、拦截器类似作用，hasRole('ROLE_USER')表达式
@@ -40,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.defaultSuccessUrl("/index")
 	        .and()
 	        //5、登出权限
-	        .logout().permitAll();
+	        .logout().logoutSuccessUrl("/toLogin").permitAll();
 	}
 	
 	@Override

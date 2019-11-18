@@ -13,7 +13,7 @@
 	.layui-card-header{border: 0px;}
 </style> 
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body"  style="background-color:rgba(192,192,192,0.25)" >
   <div class="layui-layout layui-layout-admin">
 	  <!-- 1、顶部导航开始 -->
 	  <div class="layui-header">
@@ -24,7 +24,7 @@
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="ss">个人成绩查询</a></dd>
-			      <dd><a href="">个人信息维护</a></dd>
+			      <dd><a href="pm">个人信息维护</a></dd>
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">
@@ -40,7 +40,7 @@
 		 <ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
-	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+	           <img src="${pageContext.request.contextPath }/image/timg.jpg" class="layui-nav-img">
 	          <security:authentication property="name"/>
 	         </a>
 	       </li>
@@ -233,9 +233,8 @@ layui.use(['table','form'], function(){
     ,url:'score/list'
     ,title: '学生成绩表'
     ,cols: [[
-      {type: 'checkbox', fixed: 'left'}
-      ,{field:'id', title:'学号ID', width:100, fixed: 'left', unresize: true, sort: true}
-      ,{field:'userid', title:'学生姓名', width:130, sort: true}
+      {field:'id', title:'成绩ID', width:100, fixed: 'left', unresize: true, sort: true}
+      ,{field:'userid', title:'学生姓名', width:130}
       ,{field:'gradeid', title:'学生年级', width:110, sort: true}
       ,{field:'english', title:'英语成绩', width:130, sort: true}
       ,{field:'politics', title:'政治成绩', width:130, sort: true}
@@ -252,7 +251,7 @@ layui.use(['table','form'], function(){
 	        "data": res.records //解析数据列表
 	      };
 	    },
-	    limits:[5,10,15],
+	    limits:[5,3,1],
 	    limit: 5
   });
   
@@ -321,7 +320,7 @@ layui.use(['table','form'], function(){
 						obj.del(); //删除对应行（tr） 的 DOM 结构， 并更新缓存
 						layer.close(index);//关闭弹出框
 						table.reload("test", {
-							url : "score/list"
+							url : "score/list?page=1"
 						});//重新加载表单（id=test）(表单重载)
 					});
 				} else if (ret.code == "-1") { //删除失败

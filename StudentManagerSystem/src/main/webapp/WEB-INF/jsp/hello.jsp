@@ -30,7 +30,7 @@
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="ss">个人成绩查询</a></dd>
-			      <dd><a href="">个人信息维护</a></dd>
+			      <dd><a href="pm">个人信息维护</a></dd>
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">
@@ -46,7 +46,7 @@
 		 <ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
-	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+	           <img src="${pageContext.request.contextPath }/image/timg.jpg" class="layui-nav-img">
 	           <security:authentication property="name"/>
 	         </a>
 	       </li>

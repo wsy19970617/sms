@@ -24,4 +24,8 @@ public class JumpController {
 	public String ssp() {
 		return "personScore";
 	}
+	@RequestMapping("/pm")
+	public String pm() {
+		return "personManage";
+	}
 }

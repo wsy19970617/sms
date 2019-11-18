@@ -13,7 +13,7 @@
 	.layui-card-header{border: 0px;}
 </style> 
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body"  style="background-color:rgba(192,192,192,0.25)" >
   <div class="layui-layout layui-layout-admin">
 	  <!-- 1、顶部导航开始 -->
 	  <div class="layui-header">
@@ -24,11 +24,11 @@
 			  <li class="layui-nav-item"><a href="javascript:;">用户管理</a>
 			    <dl class="layui-nav-child">
 			      <dd><a href="ss">个人成绩查询</a></dd>
-			      <dd><a href="">个人信息维护</a></dd>
+			      <dd><a href="pm">个人信息维护</a></dd>
 			    </dl>
 			  </li>
 			  <security:authorize access="hasRole('ROLE_ADMIN')">
-				  <li class="layui-nav-item  layui-this"><a href="javascript:;">学生管理</a>
+				  <li class="layui-nav-item layui-this"><a href="javascript:;">学生管理</a>
 				    <dl class="layui-nav-child">
 				      <dd><a href="s">学生成绩管理</a></dd>
 				      <dd><a href="mes">学生信息管理</a></dd>
@@ -40,7 +40,7 @@
 		<ul class="layui-nav layui-layout-right">
 	       <li class="layui-nav-item">
 	         <a href="javascript:;">
-	           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+	           <img src="${pageContext.request.contextPath }/image/timg.jpg" class="layui-nav-img">
 	         <security:authentication property="name"/>
 	         </a>
 	       </li>

@@ -13,10 +13,12 @@
 	href="${pageContext.request.contextPath }/bower_components/layui/dist/css/layui.css">
 <style type="text/css">
 	.controHeight {height: 20vh;}
-	/* .controbackground{margin: 0 auto; background:url("image/background.jpg") no-repeat; background-size:100vw ;} */
+	body{background-image:url("${pageContext.request.contextPath }/image/123.jpg"); background-repeat: no-repeat;background-size:100vw 100vh; }
+	.yinshen{display: none;}
 </style>
 </head>
 <body>
+<!--  style="background-color:rgba(192,192,192,0.25)"  -->
   <div class="layui-layout layui-layout-admin">
 	  <!-- 1、顶部导航开始 -->
 	  <div class="layui-header">
@@ -33,7 +35,18 @@
 	 <!-- 2、内容主体区域 -->
 	 <div class="layui-container controbackground">
 		<div class="layui-row controHeight"></div>
-		<div class="layui-card">
+		<div class="layui-row">&nbsp;</div>
+		<div class="layui-row">&nbsp;</div>
+		<div class="layui-row">&nbsp;</div>
+		<div class="layui-row">
+		<div class="layui-col-md5">&nbsp;</div>
+		<div class="layui-col-md6">
+		<button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" id="tanchu">&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;Login</button>
+		</div>
+		</div>
+		
+		
+		<div class="layui-card yinshen" id="card">
 			<div class="layui-card-header">欢迎您的到来，请先登录</div>
 			<div class="layui-card-body">
 				<div class="layui-container">
@@ -153,6 +166,12 @@
 				return false;
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		$("#tanchu").click(function(){
+			$("#tanchu").addClass("yinshen");
+			$("#card").removeClass("yinshen");
+			});
 	</script>
 </body>
 </html>
